@@ -1,6 +1,6 @@
 # elites_app_22
 
-Elites department APP where in we are goig to lauch with new features which helps during ELIXER exhibition.
+Elites department APP where in we are going to launch elites with new features which helps during ELIXER exhibition.
 
 ## Getting Started
 
