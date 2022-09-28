@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-=======
 import 'package:flutter/material.dart';
->>>>>>> origin/master
+
 class home_main_page extends StatefulWidget {
   const home_main_page({Key? key}) : super(key: key);
 
@@ -13,10 +12,9 @@ class home_main_page extends StatefulWidget {
 }
 
 class _home_main_pageState extends State<home_main_page> {
-<<<<<<< HEAD
   late Stream slides;
 
-  Stream queryDb()  {
+  Stream queryDb() {
     slides = FirebaseFirestore.instance
         .collection('projects_slider')
         .snapshots()
@@ -30,42 +28,41 @@ class _home_main_pageState extends State<home_main_page> {
     super.initState();
   }
 
-  final PageController controller=PageController();
+  final CarouselController controller = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: StreamBuilder(
-            stream: slides, builder: (context, AsyncSnapshot snap) {
-              List slideList=snap.data.toList();
-          if (snap.hasError) {
-          }
-          if (snap.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          }
-          return PageView.builder(
-            controller: controller,
-              itemCount: slideList.length,
-              itemBuilder: (context, int index) {
-                return _buildStoryPage(slideList[index]);
-
-              });
-        }));
+            stream: slides,
+            builder: (context, AsyncSnapshot snap) {
+              List slideList = snap.data.toList();
+              if (snap.hasError) {}
+              if (snap.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              }
+              return CarouselSlider.builder(
+                carouselController: controller,
+                itemCount: slideList.length,
+                itemBuilder: (context, index,realIndex) {
+                  return _buildStoryPage(slideList[index]);
+                },
+                options: CarouselOptions(height: 400),
+              );
+            }));
   }
-  _buildStoryPage(Map data){
+
+  _buildStoryPage(Map data) {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(data['image'])
-        )
-      ),
+          image: DecorationImage(image: NetworkImage(data['image']))),
       child: Center(
         child: Text(data['title']),
       ),
     );
-=======
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
->>>>>>> origin/master
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold();
+    }
   }
 }
