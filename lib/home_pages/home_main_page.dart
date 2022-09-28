@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+=======
+import 'package:flutter/material.dart';
+>>>>>>> origin/master
 class home_main_page extends StatefulWidget {
   const home_main_page({Key? key}) : super(key: key);
 
@@ -9,6 +13,7 @@ class home_main_page extends StatefulWidget {
 }
 
 class _home_main_pageState extends State<home_main_page> {
+<<<<<<< HEAD
   late Stream slides;
 
   Stream queryDb()  {
@@ -57,5 +62,10 @@ class _home_main_pageState extends State<home_main_page> {
         child: Text(data['title']),
       ),
     );
+=======
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+>>>>>>> origin/master
   }
 }
