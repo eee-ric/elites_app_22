@@ -5,6 +5,9 @@ class events_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(
+        child: Text("d   h h h  "),
+      ),
     );
   }
 }

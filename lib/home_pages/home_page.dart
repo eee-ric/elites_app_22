@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:elites_app_22/home_pages/events_page.dart';
 import 'package:elites_app_22/home_pages/explore.dart';
 import 'package:elites_app_22/home_pages/facilities.dart';
-import 'package:elites_app_22/home_pages/home_main_page.dart';
+import 'package:elites_app_22/home_pages/main_home/home_main_page.dart';
 import 'package:elites_app_22/home_pages/more.dart';
 import 'package:flutter/material.dart';
 
@@ -44,6 +44,9 @@ class _home_pageState extends State<home_page> {
         color: Color.fromRGBO(103, 0, 1, 20),
         animationDuration: Duration(milliseconds: 500),
         index: index,
+        onTap: (index)=>setState(() {
+          this.index=index;
+        }),
         items: [
           Icon(
             Icons.travel_explore,
