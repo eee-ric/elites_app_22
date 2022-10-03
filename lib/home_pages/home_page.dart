@@ -1,10 +1,11 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:elites_app_22/home_pages/events_page.dart';
 import 'package:elites_app_22/home_pages/explore.dart';
-import 'package:elites_app_22/home_pages/facilities.dart';
 import 'package:elites_app_22/home_pages/main_home/home_main_page.dart';
 import 'package:elites_app_22/home_pages/more.dart';
 import 'package:flutter/material.dart';
+
+import 'notifications.dart';
 
 class home_page extends StatefulWidget {
   const home_page({Key? key}) : super(key: key);
@@ -19,26 +20,16 @@ class _home_pageState extends State<home_page> {
   @override
   Widget build(BuildContext context) {
     final screens = [
-      explore_page(),
+
+      notifications(),
       events_page(),
       home_main_page(),
-      facilities_page(),
+      explore(),
       more_page(),
     ];
     return Scaffold(
       extendBody: true,
       body: screens[index],
-      appBar: AppBar(
-        title: Text('Elites'),
-        backgroundColor: Color.fromRGBO(103, 0, 1, 20),
-        centerTitle: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(25),
-            bottomLeft: Radius.circular(25),
-          ),
-        ),
-      ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
         color: Color.fromRGBO(103, 0, 1, 20),
@@ -49,7 +40,7 @@ class _home_pageState extends State<home_page> {
         }),
         items: [
           Icon(
-            Icons.travel_explore,
+            Icons.notifications_outlined,
             color: Colors.white,
           ),
           Icon(

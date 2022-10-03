@@ -1,10 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/main_home/project_slide_detail.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class home_main_page extends StatefulWidget {
   const home_main_page({Key? key}) : super(key: key);
@@ -16,6 +16,7 @@ class home_main_page extends StatefulWidget {
 class _home_main_pageState extends State<home_main_page> {
   late Stream slides;
   int activeIndex = 0;
+  bool isInitialized = false;
 
   Stream queryDb() {
     slides = FirebaseFirestore.instance
@@ -23,6 +24,18 @@ class _home_main_pageState extends State<home_main_page> {
         .snapshots()
         .map((list) => list.docs.map((doc) => doc.data()));
     return slides;
+  }
+
+  Future readData() async {
+    final QuerySnapshot result = (await FirebaseFirestore.instance
+        .collection('projects_slider')
+        .snapshots()
+        .map((list) => list.docs.map((doc) => doc.data())))
+    as QuerySnapshot<Object?>;
+    final List<DocumentSnapshot> list = result.docs;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('projects_slider', <String>['image', 'title']);
+    final List<String>? items = prefs.getStringList('projects_slider');
   }
 
   @override
@@ -36,11 +49,22 @@ class _home_main_pageState extends State<home_main_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text('EEE NMAMIT'),
+          backgroundColor: Color.fromRGBO(103, 0, 1, 20),
+          centerTitle: true,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(25),
+              bottomLeft: Radius.circular(25),
+            ),
+          ),
+        ),
         body: StreamBuilder(
             stream: slides,
             builder: (context, AsyncSnapshot snap) {
               List slideList = snap.data.toList();
-              if (snap.hasError) {}
+              readData();
               if (snap.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator();
               }
@@ -51,8 +75,7 @@ class _home_main_pageState extends State<home_main_page> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  project_slide_detail()));
+                              builder: (context) => project_slide_detail()));
                     },
                     child: CarouselSlider.builder(
                       carouselController: controller,
@@ -69,31 +92,29 @@ class _home_main_pageState extends State<home_main_page> {
                           autoPlayInterval: Duration(seconds: 3)),
                     ),
                   ),
-                  // const SizedBox(
-                  //   height: 30,
-                  // ),
-                  // _buiderIndicator(),
                 ],
               );
             }));
   }
 
-  // Widget _buiderIndicator() => AnimatedSmoothIndicator(
-  //       activeIndex: activeIndex,
-  //       count: activeIndex,
-  //       effect: JumpingDotEffect(dotWidth: 10, dotHeight: 10,dotColor: Colors.grey,activeDotColor: Color.fromRGBO(103, 0, 1, 20),),
-  //     );
-
   _buildStoryPage(Map data) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 25),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          image: DecorationImage(
-              image: NetworkImage(data['image']), fit: BoxFit.cover)),
-      // child: Center(
-      //   child: Text(data['title']),
-      // ),
+    return CachedNetworkImage(imageUrl: data['image'],
+      imageBuilder: (context, imageProvider) =>
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                    colorFilter:
+                    ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
+              ),
+            ),
+          ),
+      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+      errorWidget: (context, url, error) => Icon(Icons.error),
     );
   }
 }
