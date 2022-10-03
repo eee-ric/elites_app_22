@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/main_home/project_slide_detail.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class home_main_page extends StatefulWidget {
@@ -28,10 +29,10 @@ class _home_main_pageState extends State<home_main_page> {
 
   Future readData() async {
     final QuerySnapshot result = (await FirebaseFirestore.instance
-        .collection('projects_slider')
-        .snapshots()
-        .map((list) => list.docs.map((doc) => doc.data())))
-    as QuerySnapshot<Object?>;
+            .collection('projects_slider')
+            .snapshots()
+            .map((list) => list.docs.map((doc) => doc.data())))
+        as QuerySnapshot<Object?>;
     final List<DocumentSnapshot> list = result.docs;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setStringList('projects_slider', <String>['image', 'title']);
@@ -98,21 +99,21 @@ class _home_main_pageState extends State<home_main_page> {
   }
 
   _buildStoryPage(Map data) {
-    return CachedNetworkImage(imageUrl: data['image'],
-      imageBuilder: (context, imageProvider) =>
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
-                    colorFilter:
+    return CachedNetworkImage(
+      imageUrl: data['image'],
+      imageBuilder: (context, imageProvider) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+                colorFilter:
                     ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
-              ),
-            ),
           ),
+        ),
+      ),
       placeholder: (context, url) => Center(child: CircularProgressIndicator()),
       errorWidget: (context, url, error) => Icon(Icons.error),
     );

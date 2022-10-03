@@ -1,4 +1,4 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -7,9 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class project_slide_detail extends StatefulWidget {
-
   const project_slide_detail({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +15,6 @@ class project_slide_detail extends StatefulWidget {
 }
 
 class _project_slide_detailState extends State<project_slide_detail> {
-
   late Stream slides;
   int activeIndex = 0;
 
@@ -28,7 +25,6 @@ class _project_slide_detailState extends State<project_slide_detail> {
         .map((list) => list.docs.map((doc) => doc.data()));
     return slides;
   }
-
 
   @override
   void initState() {
@@ -59,7 +55,7 @@ class _project_slide_detailState extends State<project_slide_detail> {
                     return _buildStoryPage(slideList[index]);
                   },
                   options: CarouselOptions(
-                    height: 500,
+                      height: 500,
                       enlargeCenterPage: true,
                       onPageChanged: (index, reason) =>
                           setState(() => activeIndex = index),
@@ -89,16 +85,16 @@ class _project_slide_detailState extends State<project_slide_detail> {
             SizedBox(height: 20),
             Text(data['title']),
             SizedBox(height: 20),
-
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(),
             ),
-            Image(
-              image: NetworkImage(data['image']),
-              fit: BoxFit.cover,
-                height: 200,
-            )
+            CachedNetworkImage(imageUrl: data['image'],
+              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
+            SizedBox(height: 20),
+            Text(data['description']),
           ]),
         ),
       ),
