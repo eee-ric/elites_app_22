@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
@@ -5,6 +7,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class project_slide_detail extends StatefulWidget {
@@ -15,6 +18,8 @@ class project_slide_detail extends StatefulWidget {
 }
 
 class _project_slide_detailState extends State<project_slide_detail> {
+  final borderRadius = BorderRadius.circular(25);
+  final logoRed = Color.fromRGBO(103, 0, 1, 20);
   late Stream slides;
   int activeIndex = 0;
 
@@ -55,54 +60,69 @@ class _project_slide_detailState extends State<project_slide_detail> {
                     return _buildStoryPage(slideList[index]);
                   },
                   options: CarouselOptions(
-                      height: 500,
+                      height: MediaQuery.of(context).size.height,
                       enlargeCenterPage: true,
                       onPageChanged: (index, reason) =>
                           setState(() => activeIndex = index),
                       autoPlayInterval: Duration(seconds: 3)),
                 ),
-                // const SizedBox(
-                //   height: 30,
-                // ),
-                // _buiderIndicator(),
               ],
             );
           }),
     );
   }
 
-  // Widget _buiderIndicator() => AnimatedSmoothIndicator(
-  //       activeIndex: activeIndex,
-  //       count: activeIndex,
-  //       effect: JumpingDotEffect(dotWidth: 10, dotHeight: 10,dotColor: Colors.grey,activeDotColor: Color.fromRGBO(103, 0, 1, 20),),
-  //     );
-
   _buildStoryPage(Map data) {
     return SingleChildScrollView(
       child: SafeArea(
-        child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 25.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(height: 20),
-            Text(data['title']),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(),
-            ),
-            CachedNetworkImage(imageUrl: data['image'],
-              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+            CachedNetworkImage(
+              imageUrl: data['image'],
+              imageBuilder: (context, imageProvider) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Container(
+                  width:MediaQuery.of(context).size.width,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                        colorFilter:
+                        ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
+                  ),
+                ),
+              ),
+              placeholder: (context, url) =>
+                  Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
-            SizedBox(height: 20),
-            Text(data['description']),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 25.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10),
+                    child: (Text(data['title'].toString().toUpperCase(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.secularOne(
+                          color: logoRed,
+                          fontSize: 24,
+                        ))),
+                  ),
+                  Text(data['description'],
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.josefinSans(
+                          color: logoRed, fontSize: 24)),
+                ],
+              ),
+            )
           ]),
         ),
       ),
     );
-
-    // image: NetworkImage(data['image']), fit: BoxFit.cover)),
-    // child: Center(
-    //   child: Text(data['title']),
-    // ),
   }
 }

@@ -64,11 +64,12 @@ class _home_main_pageState extends State<home_main_page> {
         body: StreamBuilder(
             stream: slides,
             builder: (context, AsyncSnapshot snap) {
-              List slideList = snap.data.toList();
+
               readData();
               if (snap.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator();
               }
+              List slideList = snap.data.toList();
               return Column(
                 children: [
                   GestureDetector(

@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:elites_app_22/home_pages/events_page.dart';
-import 'package:elites_app_22/home_pages/explore.dart';
+import 'package:elites_app_22/home_pages/explore_pages/explore.dart';
 import 'package:elites_app_22/home_pages/main_home/home_main_page.dart';
 import 'package:elites_app_22/home_pages/more.dart';
 import 'package:flutter/material.dart';
