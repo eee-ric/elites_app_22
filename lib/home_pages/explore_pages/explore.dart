@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/facilities.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'explore list.dart';
 
@@ -38,9 +40,8 @@ class _exploreState extends State<explore> {
   }
 
   final logoRed = Color.fromRGBO(103, 0, 1, 20);
-  final logoRedCardBG = Color.fromRGBO(236, 204, 184,82);
+  final logoRedCardBG = Color.fromRGBO(242, 240, 197, 86);
   final borderRadius = BorderRadius.circular(25);
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,48 +60,65 @@ class _exploreState extends State<explore> {
         body: ListView.builder(
           itemCount: listExploreItems.length,
           itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(5),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: borderRadius),
-                color: logoRedCardBG,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CachedNetworkImage(
-                      imageUrl: listExploreItems[index].exploreImage,
-                      imageBuilder: (context, imageProvider) => Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 16),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * .4,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            boxShadow:[new BoxShadow(
-                              color: logoRed,
-                              blurRadius: 10
-                            )],
-                            borderRadius: borderRadius,
-                            image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                    Colors.white, BlendMode.colorBurn)),
+            //onTAP FOR INDEX ITEMS
+            return GestureDetector(
+              onTap: () {
+                if (index == 0) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => facilities()));
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Card(
+                  elevation: 2,
+                  shadowColor: logoRed,
+                  shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                  color: logoRedCardBG,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      //EXPLORE IMAGE
+                      CachedNetworkImage(
+                        imageUrl: listExploreItems[index].exploreImage,
+                        imageBuilder: (context, imageProvider) => Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 16, horizontal: 16),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * .3,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              // boxShadow: [
+                              //   new BoxShadow(color: logoRed, blurRadius: 5)
+                              // ],
+                              borderRadius: borderRadius,
+                              image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                  colorFilter: ColorFilter.mode(
+                                      Colors.white, BlendMode.colorBurn)),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Container(
-                        child: Text(
-                          listExploreItems[index].exploreTitle,
-                          textAlign: TextAlign.start,
+
+                      //EXPLORE TITLE
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .5,
+                          child: Text(
+                            listExploreItems[index].exploreTitle,
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.secularOne(fontSize: 22),
+                            softWrap: true,
+                            overflow: TextOverflow.fade,
+                            maxLines: 4,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );
