@@ -1,5 +1,12 @@
+//    FIRE STORE Variables in this page
+//
+//                                    facilities_front_title
+//      facilities_list   --------  = facilities_front_image
+//                                    facilities_detail
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/facilities/route_for_facilitiesItem.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,7 +40,8 @@ class _facilitiesState extends State<facilities> {
             facilitiesFrontImage:
                 facilitiesListFromJson['facilities_front_image'],
             facilitiesFrontTitle:
-                facilitiesListFromJson['facilities_front_title']))
+                facilitiesListFromJson['facilities_front_title'],
+            facilitiesDetailText: facilitiesListFromJson['facilities_detail']))
         .toList();
     setState(() {
       listFacilitiesItems = final_list;
@@ -61,45 +69,53 @@ class _facilitiesState extends State<facilities> {
         body: ListView.builder(
           itemCount: listFacilitiesItems.length,
           itemBuilder: (BuildContext context, int index) {
+            FacilitiesList facilitiesListOrder = listFacilitiesItems[index];
             //onTAP FOR INDEX ITEMS
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                //EXPLORE IMAGE
-                CachedNetworkImage(
-                  imageUrl: listFacilitiesItems[index].facilitiesFrontImage,
-                  imageBuilder: (context, imageProvider) => Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 16, horizontal: 16),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      decoration: BoxDecoration(
-                        // boxShadow: [
-                        //   new BoxShadow(color: logoRed, blurRadius: 5)
-                        // ],
-                        borderRadius: borderRadius,
-                        image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                                Colors.white, BlendMode.colorBurn)),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          //FACILITIES TITLE
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            route_for_facilities(facilitiesListOrder)));
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  //EXPLORE IMAGE
+                  CachedNetworkImage(
+                    imageUrl: listFacilitiesItems[index].facilitiesFrontImage,
+                    imageBuilder: (context, imageProvider) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 16),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            new BoxShadow(color: logoRed, blurRadius: 10)
+                          ],
+                          borderRadius: borderRadius,
+                          image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(
+                                  Colors.white, BlendMode.colorBurn)),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            //FACILITIES TITLE
+                            Container(
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: CardBG,
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20)),
+                                color: Colors.white,
                               ),
                               width: MediaQuery.of(context).size.width,
                               child: Column(
                                 children: [
-
                                   Text(
                                     listFacilitiesItems[index]
                                         .facilitiesFrontTitle,
@@ -112,13 +128,12 @@ class _facilitiesState extends State<facilities> {
                                     overflow: TextOverflow.fade,
                                     maxLines: 4,
                                   ),
-
                                   Text(
                                     listFacilitiesItems[index]
                                         .facilitiesFrontTitle,
                                     textAlign: TextAlign.center,
-                                    style: GoogleFonts.secularOne(
-                                      fontSize: 22,
+                                    style: GoogleFonts.josefinSans(
+                                      fontSize: 18,
                                       color: logoRed,
                                     ),
                                     softWrap: true,
@@ -128,13 +143,13 @@ class _facilitiesState extends State<facilities> {
                                 ],
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ));
