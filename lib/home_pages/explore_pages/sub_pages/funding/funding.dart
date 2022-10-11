@@ -22,14 +22,13 @@ class _funding_pageState extends State<funding_page> {
 
   fetchData() async {
     var ListRecordFunding =
-    await FirebaseFirestore.instance.collection('funding_list').get();
+        await FirebaseFirestore.instance.collection('funding_list').get();
     mapListRecord(ListRecordFunding);
   }
 
   mapListRecord(QuerySnapshot<Map<String, dynamic>> ListRecord) {
     var final_list = ListRecord.docs
-        .map((fundingListFromJson) =>
-        FundingList(
+        .map((fundingListFromJson) => FundingList(
             fundingTitle: fundingListFromJson['funding_title'],
             fundingAmount: fundingListFromJson['funding_amount'],
             fundingYear: fundingListFromJson['funding_year'],
@@ -58,12 +57,50 @@ class _funding_pageState extends State<funding_page> {
           ),
         ),
       ),
-      body: ListView.builder(itemBuilder: (BuildContext context, int index) {},
+      body: ListView.builder(
+        itemCount: listFundingItems.length,
+        itemBuilder: (BuildContext context, int index) {
+          FundingList fundingList = listFundingItems[index];
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: borderRadius,
+            ),
+            child: Column(
+              children: [
+                Text(listFundingItems[index].fundingTitle),
+                Container(
+                  decoration: BoxDecoration(color: Colors.blue),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Column(
+                          children: [
+                            Text('Amount'),
+                            Text('Year'),
+                            Text('Agency'),
+                          ],
+                        ),
+                      ),
+                      Expanded(
 
-
+                        flex: 5,
+                        child: Column(
+                          children: [
+                            Text(listFundingItems[index].fundingAmount),
+                            Text(listFundingItems[index].fundingYear),
+                            Text(listFundingItems[index].fundingAgency),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
-    )
-    ,
     );
   }
 }
