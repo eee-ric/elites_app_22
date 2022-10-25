@@ -6,6 +6,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_main_page.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/facilities/facilities.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/funding/funding.dart';
 import 'package:flutter/material.dart';
@@ -76,6 +77,9 @@ class _exploreState extends State<explore> {
                 }else  if (index == 1) {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => funding_page()));
+                }else  if (index == 2) {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => elites_main_page()));
                 }
               },
               child: Container(
