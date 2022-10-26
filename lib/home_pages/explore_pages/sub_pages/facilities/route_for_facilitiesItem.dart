@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:elites_app_22/home_pages/explore_pages/sub_pages/facilities/facilities.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'facilities_list.dart';

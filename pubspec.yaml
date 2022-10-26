@@ -44,6 +44,8 @@ dependencies:
   cached_network_image: ^3.2.2
   liquid_pull_to_refresh: ^3.0.1
   google_fonts: ^3.0.1
+  firebase_storage:
+  path_provider:
 
 
 

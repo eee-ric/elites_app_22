@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir/elixir.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -143,7 +143,7 @@ class _elites_main_pageState extends State<elites_main_page> {
                                                 color: Colors.white),
                                             Shadow(
                                               offset: Offset(5.0, 5.0),
-                                              blurRadius: 8.0,
+                                              blurRadius: 10.0,
                                               color: logoRed
                                             ),
                                           ])),
