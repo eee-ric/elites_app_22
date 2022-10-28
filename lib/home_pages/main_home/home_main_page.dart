@@ -15,6 +15,13 @@ class home_main_page extends StatefulWidget {
 }
 
 class _home_main_pageState extends State<home_main_page> {
+
+  @override
+  void initState() {
+
+    queryDb();
+    super.initState();
+  }
   late Stream slides;
   int activeIndex = 0;
   bool isInitialized = false;
@@ -39,11 +46,7 @@ class _home_main_pageState extends State<home_main_page> {
     final List<String>? items = prefs.getStringList('projects_slider');
   }
 
-  @override
-  void initState() {
-    queryDb();
-    super.initState();
-  }
+
 
   final CarouselController controller = CarouselController();
 
@@ -51,10 +54,10 @@ class _home_main_pageState extends State<home_main_page> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('EEE NMAMIT'),
-          backgroundColor: Color.fromRGBO(103, 0, 1, 20),
+          title: const Text('EEE NMAMIT'),
+          backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
           centerTitle: true,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(25),
               bottomLeft: Radius.circular(25),
@@ -67,7 +70,7 @@ class _home_main_pageState extends State<home_main_page> {
 
               readData();
               if (snap.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
               List slideList = snap.data.toList();
               return Column(
@@ -77,7 +80,7 @@ class _home_main_pageState extends State<home_main_page> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => project_slide_detail()));
+                              builder: (context) => const project_slide_detail()));
                     },
                     child: CarouselSlider.builder(
                       carouselController: controller,
@@ -91,7 +94,7 @@ class _home_main_pageState extends State<home_main_page> {
                           autoPlay: true,
                           onPageChanged: (index, reason) =>
                               setState(() => activeIndex = index),
-                          autoPlayInterval: Duration(seconds: 3)),
+                          autoPlayInterval: const Duration(seconds: 3)),
                     ),
                   ),
                 ],
@@ -111,12 +114,12 @@ class _home_main_pageState extends State<home_main_page> {
                 image: imageProvider,
                 fit: BoxFit.cover,
                 colorFilter:
-                    ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
+                const ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
           ),
         ),
       ),
-      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-      errorWidget: (context, url, error) => Icon(Icons.error),
+      placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }
 }

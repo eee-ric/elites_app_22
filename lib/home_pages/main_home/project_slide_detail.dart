@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class project_slide_detail extends StatefulWidget {
   const project_slide_detail({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class project_slide_detail extends StatefulWidget {
 
 class _project_slide_detailState extends State<project_slide_detail> {
   final borderRadius = BorderRadius.circular(25);
-  final logoRed = Color.fromRGBO(103, 0, 1, 20);
+  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
   late Stream slides;
   int activeIndex = 0;
 
@@ -49,7 +48,7 @@ class _project_slide_detailState extends State<project_slide_detail> {
             List slideList = snap.data.toList();
             if (snap.hasError) {}
             if (snap.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
             return Column(
               children: [
@@ -64,7 +63,7 @@ class _project_slide_detailState extends State<project_slide_detail> {
                       enlargeCenterPage: true,
                       onPageChanged: (index, reason) =>
                           setState(() => activeIndex = index),
-                      autoPlayInterval: Duration(seconds: 3)),
+                      autoPlayInterval: const Duration(seconds: 3)),
                 ),
               ],
             );
@@ -91,13 +90,13 @@ class _project_slide_detailState extends State<project_slide_detail> {
                         image: imageProvider,
                         fit: BoxFit.cover,
                         colorFilter:
-                        ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
+                        const ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
                   ),
                 ),
               ),
               placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+                  const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25.0),

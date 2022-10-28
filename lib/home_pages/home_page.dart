@@ -21,24 +21,24 @@ class _home_pageState extends State<home_page> {
   Widget build(BuildContext context) {
     final screens = [
 
-      notifications(),
-      events_page(),
-      home_main_page(),
-      explore(),
-      more_page(),
+      const notifications(),
+      const events_page(),
+      const home_main_page(),
+      const explore(),
+      const more_page(),
     ];
     return Scaffold(
       extendBody: true,
       body: screens[index],
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        color: Color.fromRGBO(103, 0, 1, 20),
-        animationDuration: Duration(milliseconds: 500),
+        color: const Color.fromRGBO(103, 0, 1, 20),
+        animationDuration: const Duration(milliseconds: 500),
         index: index,
         onTap: (index)=>setState(() {
           this.index=index;
         }),
-        items: [
+        items: const [
           Icon(
             Icons.notifications_outlined,
             color: Colors.white,

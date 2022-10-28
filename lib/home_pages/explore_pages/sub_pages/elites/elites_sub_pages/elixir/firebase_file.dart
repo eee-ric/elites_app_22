@@ -8,6 +8,6 @@ class FirebaseFile {
   const FirebaseFile({
     required this.ref,
     required this.name,
-    required this.url,
+     required this.url,
   });
 }

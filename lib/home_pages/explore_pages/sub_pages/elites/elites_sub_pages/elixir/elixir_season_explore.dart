@@ -1,9 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir/elixir_list.dart';
-import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir/firebase_file.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 class elixir_season_explore extends StatelessWidget {
   final ElixirList elixirList;
@@ -17,7 +14,7 @@ class elixir_season_explore extends StatelessWidget {
         title: Text(elixirList.elixirTitle),
         backgroundColor: Color.fromRGBO(103, 0, 1, 20),
         centerTitle: true,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(25),
             bottomLeft: Radius.circular(25),
@@ -45,60 +42,61 @@ class _elixir_season_imageState extends State<elixir_season_image> {
 
   _elixir_season_imageState(this.elixirList);
 
-  late Future<List<FirebaseFile>> futureFiles;
+  late Future<ListResult> futureFiles;
 
   @override
   void initState() {
     super.initState();
-    futureFiles = FirebaseApi.listAll(elixirList.elixirImageGallery);
+    futureFiles = FirebaseStorage.instance.ref(elixirList.elixirImageGallery).listAll();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<FirebaseFile>>(
+    return FutureBuilder<ListResult>(
         future: futureFiles,
         builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator());
-            default:
-              if (snapshot.hasError) {
-                return Center(child: Text('Something went wrong!'));
-              } else {
-                final files = snapshot.data!;
-                return ListView.builder(
-                    itemCount: files.length,
-                    itemBuilder: (context, index) {
-                      final file = files[index];
-                      return buildFolderImage(context, file);
-                    });
-              }
+          if (snapshot.hasData) {
+            final files = snapshot.data!.items;
+            return ListView.builder(
+                itemCount: files.length,
+                itemBuilder: (context, index) {
+                  final file = files[index];
+                  return ListTile(
+                    title: Text(file.name),
+                  );
+                });
+          } else if (snapshot.hasError) {
+            return const Center(
+              child: Text('error occurred'),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         });
   }
-
-  Widget buildFolderImage(BuildContext context, FirebaseFile file) =>
-      Text(file.name);
 }
 
-class FirebaseApi {
-  static _getDownloadLink(List<Reference> refs) {
-    Future.wait(refs.map((ref) => ref.getDownloadURL()).toList());
-  }
 
-  static Future<List<FirebaseFile>> listAll(String path) async {
-    final ref = FirebaseStorage.instance.ref(path);
-    final result = await ref.listAll();
-    final urls = await _getDownloadLink(result.items);
-    return urls
-        .asMap()
-        .map((index, url) {
-          final ref = result.items[index];
-          final name = ref.name;
-          final file = FirebaseFile(ref: ref, name: name, url: url);
-          return MapEntry(index, file);
-        })
-        .values
-        .toList();
-  }
-}
+// class FirebaseApi {
+//   static _getDownloadLink(List<Reference> ref) {
+//     Future.wait(ref.map((ref) => ref.getDownloadURL()).toList());
+//   }
+//
+//   static Future<List<FirebaseFile>> listAll(String path) async {
+//     final ref = FirebaseStorage.instance.ref(path);
+//     final result = await ref.listAll();
+//     final urls = await _getDownloadLink(result.items);
+//     return urls
+//         .asMap()
+//         .map((index, url) {
+//           final ref = result.items[index];
+//           final name = ref.name;
+//           final file = FirebaseFile(ref: ref, name: name, url: url);
+//           return MapEntry(index, file);
+//         })
+//         .values
+//         .toList();
+//   }
+// }
