@@ -37,28 +37,28 @@ class _exploreState extends State<explore> {
   }
 
   mapListRecord(QuerySnapshot<Map<String, dynamic>> ListRecord) {
-    var final_list = ListRecord.docs
+    var finalList = ListRecord.docs
         .map((exploreListFromJson) => ExploreList(
             exploreImage: exploreListFromJson['explore_image'],
             exploreTitle: exploreListFromJson['explore_title']))
         .toList();
     setState(() {
-      listExploreItems = final_list;
+      listExploreItems = finalList;
     });
   }
 
-  final logoRed = Color.fromRGBO(103, 0, 1, 20);
-  final logoRedCardBG = Color.fromRGBO(242, 240, 197, 86);
+  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
+  final logoRedCardBG = const Color.fromRGBO(242, 240, 197, 86);
   final borderRadius = BorderRadius.circular(25);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Explore'),
-          backgroundColor: Color.fromRGBO(103, 0, 1, 20),
+          title: const Text('Explore'),
+          backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
           centerTitle: true,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(25),
               bottomLeft: Radius.circular(25),
@@ -72,28 +72,40 @@ class _exploreState extends State<explore> {
             return GestureDetector(
               onTap: () {
                 if (index == 0) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => facilities()));
-                }else  if (index == 1) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => funding_page()));
-                }else  if (index == 2) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => elites_main_page()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const facilities()));
+                } else if (index == 1) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const funding_page()));
+                } else if (index == 2) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const elites_main_page()));
                 }
               },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    //EXPLORE IMAGE
-                    CachedNetworkImage(
-                      imageUrl: listExploreItems[index].exploreImage,
-                      imageBuilder: (context, imageProvider) => Padding(
-                        padding: const EdgeInsets.only(right: 10, left: 10,top: 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * .3,
-                          height: 100,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10,left: 10,top: 10,bottom: 10),
+                child: Container(
+                  height: 120,
+                  decoration: BoxDecoration(
+                      borderRadius: borderRadius,
+                      color: Colors.black12,
+                      // boxShadow: [BoxShadow(color: logoRed, blurRadius: 10)]
+            ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      //EXPLORE IMAGE
+                      CachedNetworkImage(
+                        imageUrl: listExploreItems[index].exploreImage,
+                        imageBuilder: (context, imageProvider) => Container(
+                          width: MediaQuery.of(context).size.width * .35,
+                          height: 120,
                           decoration: BoxDecoration(
                             // boxShadow: [
                             //   new BoxShadow(color: logoRed, blurRadius: 5)
@@ -102,29 +114,29 @@ class _exploreState extends State<explore> {
                             image: DecorationImage(
                                 image: imageProvider,
                                 fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
+                                colorFilter: const ColorFilter.mode(
                                     Colors.white, BlendMode.colorBurn)),
                           ),
                         ),
                       ),
-                    ),
 
-                    //EXPLORE TITLE
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * .5,
-                        child: Text(
-                          listExploreItems[index].exploreTitle,
-                          textAlign: TextAlign.start,
-                          style: GoogleFonts.secularOne(fontSize: 22),
-                          softWrap: true,
-                          overflow: TextOverflow.fade,
-                          maxLines: 4,
+                      //EXPLORE TITLE
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .5,
+                          child: Text(
+                            listExploreItems[index].exploreTitle,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.secularOne(fontSize: 22),
+                            softWrap: true,
+                            overflow: TextOverflow.fade,
+                            maxLines: 4,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

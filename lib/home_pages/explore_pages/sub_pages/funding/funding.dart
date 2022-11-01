@@ -48,18 +48,18 @@ class _funding_pageState extends State<funding_page> {
     });
   }
 
-  final logoRed = Color.fromRGBO(103, 0, 1, 20);
-  final CardBG = Color.fromRGBO(242, 240, 197, 86);
+  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
+  final CardBG = const Color.fromRGBO(242, 240, 197, 86);
   final borderRadius = BorderRadius.circular(25);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Funding'),
-        backgroundColor: Color.fromRGBO(103, 0, 1, 20),
+        title: const Text('Funding'),
+        backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
         centerTitle: true,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(25),
             bottomLeft: Radius.circular(25),
@@ -76,14 +76,14 @@ class _funding_pageState extends State<funding_page> {
               decoration: BoxDecoration(
                   color: logoRed,
                   borderRadius: borderRadius,
-                  boxShadow: [new BoxShadow(color: logoRed, blurRadius: 10)]),
+                  boxShadow: [BoxShadow(color: logoRed, blurRadius: 10)]),
               child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
                       listFundingItems[index].fundingTitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                           color: Colors.white),
@@ -101,7 +101,7 @@ class _funding_pageState extends State<funding_page> {
                               padding: const EdgeInsets.only(right: 10,left: 10,top: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     'Amount',
                                     style: TextStyle(
@@ -126,7 +126,7 @@ class _funding_pageState extends State<funding_page> {
                               padding: const EdgeInsets.only(right: 10,left: 10,top: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     'Year',
                                     style: TextStyle(
@@ -151,7 +151,7 @@ class _funding_pageState extends State<funding_page> {
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     'Agency',
                                     style: TextStyle(

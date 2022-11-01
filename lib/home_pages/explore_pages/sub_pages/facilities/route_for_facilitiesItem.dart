@@ -5,8 +5,8 @@ import 'facilities_list.dart';
 
 class route_for_facilities extends StatelessWidget {
   final FacilitiesList facilitiesList;
-  final logoRed = Color.fromRGBO(103, 0, 1, 20);
-  final CardBG = Color.fromRGBO(242, 240, 197, 86);
+  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
+  final CardBG = const Color.fromRGBO(242, 240, 197, 86);
   final borderRadius = BorderRadius.circular(25);
 
   route_for_facilities(this.facilitiesList);
@@ -16,9 +16,9 @@ class route_for_facilities extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(facilitiesList.facilitiesFrontTitle),
-        backgroundColor: Color.fromRGBO(103, 0, 1, 20),
+        backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
         centerTitle: true,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(25),
             bottomLeft: Radius.circular(25),
@@ -32,7 +32,6 @@ class route_for_facilities extends StatelessWidget {
             child: CachedNetworkImage(
               imageUrl: facilitiesList.facilitiesFrontImage,
               imageBuilder: (context, imageProvider) => Container(
-
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.25,
                 decoration: BoxDecoration(
@@ -43,15 +42,17 @@ class route_for_facilities extends StatelessWidget {
                   ),
                 ),
               ),
-              placeholder: (context, url) => CircularProgressIndicator(),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Text(facilitiesList.facilitiesDetailText,textAlign: TextAlign.center,style: GoogleFonts.josefinSans(
-    color: logoRed, fontSize: 24
-            ),),
+            child: Text(
+              facilitiesList.facilitiesDetailText,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.josefinSans(color: logoRed, fontSize: 24),
+            ),
           )
         ],
       ),

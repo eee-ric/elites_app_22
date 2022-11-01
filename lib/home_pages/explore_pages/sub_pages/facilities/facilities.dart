@@ -48,18 +48,18 @@ class _facilitiesState extends State<facilities> {
     });
   }
 
-  final logoRed = Color.fromRGBO(103, 0, 1, 20);
-  final CardBG = Color.fromRGBO(242, 240, 197, 86);
+  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
+  final CardBG = const Color.fromRGBO(242, 240, 197, 86);
   final borderRadius = BorderRadius.circular(25);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Facilities'),
-          backgroundColor: Color.fromRGBO(103, 0, 1, 20),
+          title: const Text('Facilities'),
+          backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
           centerTitle: true,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(25),
               bottomLeft: Radius.circular(25),
@@ -93,13 +93,13 @@ class _facilitiesState extends State<facilities> {
                         height: MediaQuery.of(context).size.height * 0.25,
                         decoration: BoxDecoration(
                           boxShadow: [
-                            new BoxShadow(color: logoRed, blurRadius: 10)
+                            BoxShadow(color: logoRed, blurRadius: 10)
                           ],
                           borderRadius: borderRadius,
                           image: DecorationImage(
                               image: imageProvider,
                               fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
+                              colorFilter: const ColorFilter.mode(
                                   Colors.white, BlendMode.colorBurn)),
                         ),
                         child: Column(
@@ -107,7 +107,7 @@ class _facilitiesState extends State<facilities> {
                           children: [
                             //FACILITIES TITLE
                             Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                     bottomRight: Radius.circular(20),
                                     bottomLeft: Radius.circular(20)),
