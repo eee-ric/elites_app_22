@@ -29,7 +29,6 @@ class _funding_pageState extends State<funding_page> {
   }
 
   fetchData() async {
-
     var ListRecordFunding =
         await FirebaseFirestore.instance.collection('funding_list').get();
     mapListRecord(ListRecordFunding);
@@ -76,7 +75,7 @@ class _funding_pageState extends State<funding_page> {
               decoration: BoxDecoration(
                   color: logoRed,
                   borderRadius: borderRadius,
-                  boxShadow: [BoxShadow(color: logoRed, blurRadius: 10)]),
+                 ),
               child: Column(
                 children: [
                   Padding(
@@ -89,89 +88,97 @@ class _funding_pageState extends State<funding_page> {
                           color: Colors.white),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: borderRadius, color: Colors.white),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Table(
-                        children: [
-                          TableRow(children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10,left: 10,top: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Amount',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: borderRadius, color: Colors.white
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Table(
+                          children: [
+                            TableRow(children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10, left: 10, top: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'Amount',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10,left: 10,top: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(listFundingItems[index].fundingAmount),
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10, left: 10, top: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(listFundingItems[index].fundingAmount),
+                                  ],
+                                ),
+                              )
+                            ]),
+                            TableRow(children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10, left: 10, top: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'Year',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            )
-                          ]),
-                          TableRow(children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10,left: 10,top: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Year',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10, left: 10, top: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(listFundingItems[index].fundingYear),
+                                  ],
+                                ),
+                              )
+                            ]),
+                            TableRow(children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'Agency',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10,left: 10,top: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(listFundingItems[index].fundingYear),
-                                ],
-                              ),
-                            )
-                          ]),
-                          TableRow(children: [
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'Agency',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(listFundingItems[index].fundingAgency),
-                                ],
-                              ),
-                            )
-                          ]),
-                        ],
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(listFundingItems[index].fundingAgency),
+                                  ],
+                                ),
+                              )
+                            ]),
+                          ],
+                        ),
                       ),
                     ),
                   ),

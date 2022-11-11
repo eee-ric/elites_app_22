@@ -90,7 +90,7 @@ class _elixir_season_imageState extends State<elixir_season_image> {
         imageBuilder: (context, imageProvider) => Padding(
           padding: const EdgeInsets.all(10.0),
           child: AspectRatio(
-            aspectRatio: 16/9,
+            aspectRatio:16/9 ,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),

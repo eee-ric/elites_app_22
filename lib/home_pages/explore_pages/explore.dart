@@ -9,6 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_main_page.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/facilities/facilities.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/funding/funding.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/research_innovation/research_innovation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -86,36 +87,46 @@ class _exploreState extends State<explore> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const elites_main_page()));
+                } else if (index == 3) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const research_innovation_page()));
                 }
               },
               child: Padding(
-                padding: const EdgeInsets.only(right: 10,left: 10,top: 10,bottom: 10),
+                padding: const EdgeInsets.only(
+                    right: 10, left: 10, top: 10, bottom: 10),
                 child: Container(
                   height: 120,
                   decoration: BoxDecoration(
-                      borderRadius: borderRadius,
-                      color: Colors.black12,
-                      // boxShadow: [BoxShadow(color: logoRed, blurRadius: 10)]
-            ),
+                    borderRadius: borderRadius,
+                    color: Colors.black12,
+                    // boxShadow: [BoxShadow(color: logoRed, blurRadius: 10)]
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       //EXPLORE IMAGE
-                      CachedNetworkImage(
-                        imageUrl: listExploreItems[index].exploreImage,
-                        imageBuilder: (context, imageProvider) => Container(
-                          width: MediaQuery.of(context).size.width * .35,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            // boxShadow: [
-                            //   new BoxShadow(color: logoRed, blurRadius: 5)
-                            // ],
-                            borderRadius: borderRadius,
-                            image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                                colorFilter: const ColorFilter.mode(
-                                    Colors.white, BlendMode.colorBurn)),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: CachedNetworkImage(
+                          imageUrl: listExploreItems[index].exploreImage,
+                          imageBuilder: (context, imageProvider) => Container(
+                            width: MediaQuery.of(context).size.width * .35,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              // boxShadow: [
+                              //   new BoxShadow(color: logoRed, blurRadius: 5)
+                              // ],
+                              borderRadius: borderRadius,
+                              image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                  colorFilter: const ColorFilter.mode(
+                                      Colors.white, BlendMode.colorBurn)),
+                            ),
                           ),
                         ),
                       ),

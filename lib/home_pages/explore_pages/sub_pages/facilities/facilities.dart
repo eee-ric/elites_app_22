@@ -92,15 +92,12 @@ class _facilitiesState extends State<facilities> {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.25,
                         decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(color: logoRed, blurRadius: 10)
-                          ],
+
                           borderRadius: borderRadius,
                           image: DecorationImage(
                               image: imageProvider,
                               fit: BoxFit.cover,
-                              colorFilter: const ColorFilter.mode(
-                                  Colors.white, BlendMode.colorBurn)),
+                              ),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -111,7 +108,7 @@ class _facilitiesState extends State<facilities> {
                                 borderRadius: BorderRadius.only(
                                     bottomRight: Radius.circular(20),
                                     bottomLeft: Radius.circular(20)),
-                                color: Colors.white,
+                                color: Colors.white70,
                               ),
                               width: MediaQuery.of(context).size.width,
                               child: Column(

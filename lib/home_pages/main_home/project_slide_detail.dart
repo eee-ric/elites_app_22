@@ -33,7 +33,6 @@ class _project_slide_detailState extends State<project_slide_detail> {
   @override
   void initState() {
     queryDb();
-
     super.initState();
   }
 
@@ -46,7 +45,9 @@ class _project_slide_detailState extends State<project_slide_detail> {
           stream: slides,
           builder: (context, AsyncSnapshot snap) {
             List slideList = snap.data.toList();
-            if (snap.hasError) {}
+            if (snap.hasError) {
+              const Text('Error!');
+            }
             if (snap.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
             }
@@ -67,7 +68,9 @@ class _project_slide_detailState extends State<project_slide_detail> {
                 ),
               ],
             );
-          }),
+          }
+
+          ),
     );
   }
 
@@ -114,8 +117,8 @@ class _project_slide_detailState extends State<project_slide_detail> {
                   ),
                   Text(data['description'],
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.josefinSans(
-                          color: logoRed, fontSize: 24)),
+                      style: GoogleFonts.alegreya(
+                          color: logoRed, fontSize: 18)),
                 ],
               ),
             )

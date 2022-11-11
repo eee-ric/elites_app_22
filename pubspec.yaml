@@ -47,6 +47,9 @@ dependencies:
   path_provider:
   firebase_database:
   percent_indicator:
+  youtube_player_flutter:
+  cached_video_player:
+  align_positioned:
 
 
 

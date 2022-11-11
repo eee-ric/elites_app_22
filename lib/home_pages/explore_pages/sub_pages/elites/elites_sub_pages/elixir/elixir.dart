@@ -62,23 +62,21 @@ class _elixirState extends State<elixir> {
       ),
       body: ListView(
         children: [
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                'ELIXIR...\n Department of Electrical & Electronics Engineering at NMAM Institute of Technology, '
-                'introduced a student hobby project exhibition ELIXIR in the year 2011 aiming at "Transforming Ideas into Reality".'
-                ' This platform facilitates engineering students to improve their ideas and learn mathematical equations by building workable models.'
-                ' Students utilize their time in the laboratory and work in groups to enhance technical competence.'
-                ' The event is well supported, encouraged, and sponsored by department alumni.',
-                style: GoogleFonts.alegreya(
-                    fontSize: 18, color: logoRed, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.justify,
-              ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              'ELIXIR...\n Department of Electrical & Electronics Engineering at NMAM Institute of Technology, '
+              'introduced a student hobby project exhibition ELIXIR in the year 2011 aiming at "Transforming Ideas into Reality".'
+              ' This platform facilitates engineering students to improve their ideas and learn mathematical equations by building workable models.'
+              ' Students utilize their time in the laboratory and work in groups to enhance technical competence.'
+              ' The event is well supported, encouraged, and sponsored by department alumni.',
+              style: GoogleFonts.alegreya(
+                  fontSize: 18, color: logoRed, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.justify,
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height,
             child: ListView.builder(
               itemCount: listElixirItems.length,
               itemBuilder: (BuildContext context, int index) {
@@ -101,44 +99,45 @@ class _elixirState extends State<elixir> {
                       ),
                       child: Column(
                         children: [
-                          CachedNetworkImage(
-                            imageUrl: listElixirItems[index].elixirImage,
-                            imageBuilder: (context, imageProvider) => Container(
-                              height: 200,
-                              decoration: BoxDecoration(
-                                boxShadow: const [
-                                  BoxShadow(color: Colors.white, blurRadius: 5)
-                                ],
-                                borderRadius: borderRadius,
-                                image: DecorationImage(
-                                  image: imageProvider,
-                                  fit: BoxFit.cover,
-                                  colorFilter: const ColorFilter.mode(
-                                      Colors.white, BlendMode.colorBurn),
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: CachedNetworkImage(
+                              imageUrl: listElixirItems[index].elixirImage,
+                              imageBuilder: (context, imageProvider) => Container(
+                                height: 200,
+                                decoration: BoxDecoration(
+
+                                  borderRadius: borderRadius,
+                                  image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,
+                                    colorFilter: const ColorFilter.mode(
+                                        Colors.white, BlendMode.colorBurn),
+                                  ),
                                 ),
-                              ),
-                              child: SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                child: Center(
-                                  child: Text(
-                                    listElixirItems[index].elixirTitle,
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.secularOne(
-                                        fontSize: 40,
-                                        color: Colors.white,
-                                        textStyle: TextStyle(shadows: <Shadow>[
-                                          const Shadow(
-                                              offset: Offset(0, 0),
-                                              blurRadius: 20.0,
-                                              color: Colors.white),
-                                          Shadow(
-                                              offset: const Offset(5.0, 5.0),
-                                              blurRadius: 10.0,
-                                              color: logoRed),
-                                        ])),
-                                    softWrap: true,
-                                    overflow: TextOverflow.fade,
-                                    maxLines: 4,
+                                child: SizedBox(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Center(
+                                    child: Text(
+                                      listElixirItems[index].elixirTitle,
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.secularOne(
+                                          fontSize: 40,
+                                          color: Colors.white,
+                                          textStyle: TextStyle(shadows: <Shadow>[
+                                            const Shadow(
+                                                offset: Offset(0, 0),
+                                                blurRadius: 20.0,
+                                                color: Colors.white),
+                                            Shadow(
+                                                offset: const Offset(5.0, 5.0),
+                                                blurRadius: 10.0,
+                                                color: logoRed),
+                                          ])),
+                                      softWrap: true,
+                                      overflow: TextOverflow.fade,
+                                      maxLines: 4,
+                                    ),
                                   ),
                                 ),
                               ),
