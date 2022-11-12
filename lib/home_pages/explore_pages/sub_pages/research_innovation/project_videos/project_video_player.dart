@@ -44,9 +44,9 @@ class _project_video_playerState extends State<project_video_player> {
       player: YoutubePlayer(
         controller: _controller,
         showVideoProgressIndicator: true,
-        progressIndicatorColor: logoRed,
-        progressColors: const ProgressBarColors(
-          playedColor: logoRed,
+        progressIndicatorColor: blue,
+        progressColors:  ProgressBarColors(
+          playedColor: blue,
           handleColor: Color.fromRGBO(135, 0, 0, 27),
         ),
         onReady: () {
@@ -75,7 +75,7 @@ class _project_video_playerState extends State<project_video_player> {
                   top: 20, bottom: 10, left: 10, right: 10),
               child: Text(
                 projectVideoList.projectDes,
-                style: GoogleFonts.alegreya(fontSize: 18, color: logoRed),
+                style: GoogleFonts.alegreya(fontSize: 18, color: blue),
                 textAlign: TextAlign.center,
               ),
             )

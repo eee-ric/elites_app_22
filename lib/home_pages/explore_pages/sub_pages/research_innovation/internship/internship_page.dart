@@ -13,8 +13,11 @@ class internship_page extends StatefulWidget {
   State<internship_page> createState() => _internship_pageState();
 }
 
-const logoRed = Color.fromRGBO(103, 0, 1, 20);
-const CardBG = Color.fromRGBO(242, 240, 197, 86);
+
+final blue = const Color.fromRGBO(0, 0, 153, 30);
+final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+final yellow = const Color.fromRGBO(255, 216, 0, 50);
+
 final borderRadius = BorderRadius.circular(25);
 
 class _internship_pageState extends State<internship_page> {
@@ -50,7 +53,7 @@ class _internship_pageState extends State<internship_page> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Internship'),
-        backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+        backgroundColor: blue,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -70,7 +73,7 @@ class _internship_pageState extends State<internship_page> {
               ' After the completion of training, students work on live Power Electronics projects under the guidance of faculty. '
               '\n\n\t\tAfter the completion of the Internship, 2-3 years of dedication from the students will lead to career opportunities in the field of Power Electronic Systems.',
               style: GoogleFonts.alegreya(
-                  fontSize: 18, color: logoRed, fontWeight: FontWeight.bold),
+                  fontSize: 18, color: blue, fontWeight: FontWeight.bold),
               textAlign: TextAlign.justify,
             ),
           ),
@@ -131,7 +134,7 @@ class _internship_pageState extends State<internship_page> {
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.secularOne(
                                   fontSize: 22,
-                                  color: logoRed,
+                                  color: blue,
                                 ),
                                 softWrap: true,
                                 overflow: TextOverflow.fade,
@@ -142,7 +145,7 @@ class _internship_pageState extends State<internship_page> {
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.josefinSans(
                                   fontSize: 18,
-                                  color: logoRed,
+                                  color: blue,
                                 ),
                                 softWrap: true,
                                 overflow: TextOverflow.fade,

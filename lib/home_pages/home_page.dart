@@ -15,6 +15,10 @@ class home_page extends StatefulWidget {
 }
 
 class _home_pageState extends State<home_page> {
+
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   int index = 2;
 
   @override
@@ -32,7 +36,7 @@ class _home_pageState extends State<home_page> {
       body: screens[index],
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        color: const Color.fromRGBO(103, 0, 1, 20),
+        color: blue,
         animationDuration: const Duration(milliseconds: 500),
         index: index,
         onTap: (index)=>setState(() {

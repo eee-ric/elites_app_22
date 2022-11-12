@@ -39,8 +39,9 @@ class _elites_main_pageState extends State<elites_main_page> {
     });
   }
 
-  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
-  final CardBG = const Color.fromRGBO(242, 240, 197, 86);
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
@@ -48,7 +49,7 @@ class _elites_main_pageState extends State<elites_main_page> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('ELITES'),
-          backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+          backgroundColor: blue,
           centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -78,7 +79,7 @@ class _elites_main_pageState extends State<elites_main_page> {
                       ' The significant events are Elixir, Geomitra, Seminar week, Special guest lectures, Student development program, and Alumni interaction.',
                       style: GoogleFonts.alegreya(
                           fontSize: 18,
-                          color: logoRed,
+                          color: blue,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.justify,
                     ),
@@ -141,7 +142,7 @@ class _elites_main_pageState extends State<elites_main_page> {
                                         Shadow(
                                             offset: const Offset(5.0, 5.0),
                                             blurRadius: 10.0,
-                                            color: logoRed),
+                                            color: blue),
                                       ])),
                                   softWrap: true,
                                   overflow: TextOverflow.fade,

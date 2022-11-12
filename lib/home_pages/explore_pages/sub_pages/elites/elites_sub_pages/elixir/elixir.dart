@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir/elixir_season_explore.dart';
-import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir/firebase_file.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,9 +40,9 @@ class _elixirState extends State<elixir> {
       listElixirItems = final_list;
     });
   }
-
-  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
-  final CardBG = const Color.fromRGBO(242, 240, 197, 86);
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
@@ -51,7 +50,7 @@ class _elixirState extends State<elixir> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('ELIXIR'),
-        backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+        backgroundColor: blue,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -71,7 +70,7 @@ class _elixirState extends State<elixir> {
               ' Students utilize their time in the laboratory and work in groups to enhance technical competence.'
               ' The event is well supported, encouraged, and sponsored by department alumni.',
               style: GoogleFonts.alegreya(
-                  fontSize: 18, color: logoRed, fontWeight: FontWeight.bold),
+                  fontSize: 18, color: blue, fontWeight: FontWeight.bold),
               textAlign: TextAlign.justify,
             ),
           ),
@@ -95,7 +94,7 @@ class _elixirState extends State<elixir> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: borderRadius,
-                        color: logoRed,
+                        color: yellow,
                       ),
                       child: Column(
                         children: [
@@ -106,7 +105,6 @@ class _elixirState extends State<elixir> {
                               imageBuilder: (context, imageProvider) => Container(
                                 height: 200,
                                 decoration: BoxDecoration(
-
                                   borderRadius: borderRadius,
                                   image: DecorationImage(
                                     image: imageProvider,
@@ -132,7 +130,7 @@ class _elixirState extends State<elixir> {
                                             Shadow(
                                                 offset: const Offset(5.0, 5.0),
                                                 blurRadius: 10.0,
-                                                color: logoRed),
+                                                color: blue),
                                           ])),
                                       softWrap: true,
                                       overflow: TextOverflow.fade,
@@ -147,7 +145,7 @@ class _elixirState extends State<elixir> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               listElixirItems[index].elixirDetail,
-                              style: const TextStyle(color: Colors.white),
+                              style:  GoogleFonts.secularOne(color: blue,fontSize: 18),
                             ),
                           ),
                         ],

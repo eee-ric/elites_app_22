@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'NMAMIT.EEE',
+      debugShowCheckedModeBanner: false,
+      title: 'ELITES',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           splashTransition: SplashTransition.fadeTransition,
-          duration: 5000,
+          duration: 3000,
           nextScreen: const home_page()),
     );
   }

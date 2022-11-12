@@ -87,8 +87,8 @@ class _project_video_mainState extends State<project_video_main> {
                             width: MediaQuery.of(context).size.width * 0.4,
                             height: 150,
                             decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(color: logoRed, blurRadius: 10)
+                              boxShadow:  [
+                                BoxShadow(color: blue, blurRadius: 10)
                               ],
                               borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(25),
@@ -103,9 +103,9 @@ class _project_video_mainState extends State<project_video_main> {
                         ),
                         Container(
                           height: 150,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             boxShadow: [
-                              BoxShadow(color: logoRed, blurRadius: 10)
+                              BoxShadow(color: blue, blurRadius: 10)
                             ],
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(20),
@@ -121,7 +121,7 @@ class _project_video_mainState extends State<project_video_main> {
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.secularOne(
                                   fontSize: 22,
-                                  color: logoRed,
+                                  color: blue,
                                 ),
                                 softWrap: true,
                                 overflow: TextOverflow.fade,

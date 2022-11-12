@@ -47,8 +47,9 @@ class _funding_pageState extends State<funding_page> {
     });
   }
 
-  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
-  final CardBG = const Color.fromRGBO(242, 240, 197, 86);
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
@@ -56,7 +57,7 @@ class _funding_pageState extends State<funding_page> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Funding'),
-        backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+        backgroundColor: blue,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -73,19 +74,19 @@ class _funding_pageState extends State<funding_page> {
             padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
             child: Container(
               decoration: BoxDecoration(
-                  color: logoRed,
+                  color: yellow,
                   borderRadius: borderRadius,
                  ),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(18.0),
                     child: Text(
                       listFundingItems[index].fundingTitle,
-                      style: const TextStyle(
+                      style:  TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.white),
+                          color: blue),textAlign: TextAlign.center,
                     ),
                   ),
                   Padding(
@@ -104,11 +105,12 @@ class _funding_pageState extends State<funding_page> {
                                     right: 10, left: 10, top: 10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
+                                  children:  [
                                     Text(
                                       'Amount',
                                       style: TextStyle(
                                           fontSize: 16,
+                                          color: blue,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],
@@ -120,22 +122,23 @@ class _funding_pageState extends State<funding_page> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(listFundingItems[index].fundingAmount),
+                                    Text(listFundingItems[index].fundingAmount,style: TextStyle(color: blue),),
                                   ],
                                 ),
                               )
                             ]),
                             TableRow(children: [
                               Padding(
-                                padding: const EdgeInsets.only(
+                                padding:  EdgeInsets.only(
                                     right: 10, left: 10, top: 10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
+                                  children:  [
                                     Text(
                                       'Year',
                                       style: TextStyle(
                                           fontSize: 16,
+                                          color: blue,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],
@@ -147,7 +150,7 @@ class _funding_pageState extends State<funding_page> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(listFundingItems[index].fundingYear),
+                                    Text(listFundingItems[index].fundingYear,style: TextStyle(color: blue),),
                                   ],
                                 ),
                               )
@@ -157,10 +160,11 @@ class _funding_pageState extends State<funding_page> {
                                 padding: const EdgeInsets.all(10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
+                                  children:  [
                                     Text(
                                       'Agency',
                                       style: TextStyle(
+                                        color: blue,
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -172,7 +176,7 @@ class _funding_pageState extends State<funding_page> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(listFundingItems[index].fundingAgency),
+                                    Text(listFundingItems[index].fundingAgency,style: TextStyle(color: blue),),
                                   ],
                                 ),
                               )

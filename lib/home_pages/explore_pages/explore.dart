@@ -48,8 +48,9 @@ class _exploreState extends State<explore> {
     });
   }
 
-  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
-  final logoRedCardBG = const Color.fromRGBO(242, 240, 197, 86);
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
@@ -57,7 +58,7 @@ class _exploreState extends State<explore> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Explore'),
-          backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+          backgroundColor: blue,
           centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -97,12 +98,12 @@ class _exploreState extends State<explore> {
               },
               child: Padding(
                 padding: const EdgeInsets.only(
-                    right: 10, left: 10, top: 10, bottom: 10),
+                    right: 10, left: 10, top: 10),
                 child: Container(
                   height: 120,
                   decoration: BoxDecoration(
                     borderRadius: borderRadius,
-                    color: Colors.black12,
+                    color: blueBg,
                     // boxShadow: [BoxShadow(color: logoRed, blurRadius: 10)]
                   ),
                   child: Row(

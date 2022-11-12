@@ -69,9 +69,9 @@ class _video_bodyState extends State<video_body> {
         player: YoutubePlayer(
           controller: _controller,
           showVideoProgressIndicator: true,
-          progressIndicatorColor: logoRed,
-          progressColors: const ProgressBarColors(
-            playedColor: logoRed,
+          progressIndicatorColor: blue,
+          progressColors:  ProgressBarColors(
+            playedColor: blue,
             handleColor: Color.fromRGBO(135, 0, 0, 27),
           ),
           onReady: () {

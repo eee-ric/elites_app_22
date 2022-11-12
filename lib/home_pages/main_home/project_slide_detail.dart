@@ -18,13 +18,17 @@ class project_slide_detail extends StatefulWidget {
 
 class _project_slide_detailState extends State<project_slide_detail> {
   final borderRadius = BorderRadius.circular(25);
-  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
+
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+
   late Stream slides;
   int activeIndex = 0;
 
   Stream queryDb() {
     slides = FirebaseFirestore.instance
-        .collection('projects_slider')
+        .collection('project_slider')
         .snapshots()
         .map((list) => list.docs.map((doc) => doc.data()));
     return slides;
@@ -45,12 +49,11 @@ class _project_slide_detailState extends State<project_slide_detail> {
           stream: slides,
           builder: (context, AsyncSnapshot snap) {
             List slideList = snap.data.toList();
-            if (snap.hasError) {
-              const Text('Error!');
-            }
+
             if (snap.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             }
+
             return Column(
               children: [
                 CarouselSlider.builder(
@@ -68,9 +71,7 @@ class _project_slide_detailState extends State<project_slide_detail> {
                 ),
               ],
             );
-          }
-
-          ),
+          }),
     );
   }
 
@@ -85,15 +86,15 @@ class _project_slide_detailState extends State<project_slide_detail> {
               imageBuilder: (context, imageProvider) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Container(
-                  width:MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width,
                   height: 200,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     image: DecorationImage(
                         image: imageProvider,
-                        fit: BoxFit.cover,
-                        colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.colorBurn)),
+                        fit: BoxFit.fitHeight,
+                        colorFilter: const ColorFilter.mode(
+                            Colors.white, BlendMode.colorBurn)),
                   ),
                 ),
               ),
@@ -111,14 +112,14 @@ class _project_slide_detailState extends State<project_slide_detail> {
                     child: (Text(data['title'].toString().toUpperCase(),
                         textAlign: TextAlign.center,
                         style: GoogleFonts.secularOne(
-                          color: logoRed,
+                          color: blue,
                           fontSize: 24,
                         ))),
                   ),
                   Text(data['description'],
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.alegreya(
-                          color: logoRed, fontSize: 18)),
+                      textAlign: TextAlign.justify,
+                      style:
+                          GoogleFonts.alegreya(color: blue, fontSize: 18)),
                 ],
               ),
             )

@@ -11,9 +11,9 @@ class research_innovation_page extends StatefulWidget {
   State<research_innovation_page> createState() =>
       _research_innovation_pageState();
 }
-
-const logoRed = Color.fromRGBO(103, 0, 1, 20);
-const CardBG = Color.fromRGBO(242, 240, 197, 86);
+const blue = Color.fromRGBO(0, 0, 153, 30);
+const blueBg = Color.fromRGBO(149, 157, 244, 77);
+const yellow = Color.fromRGBO(255, 216, 0, 50);
 final borderRadius = BorderRadius.circular(25);
 
 class _research_innovation_pageState extends State<research_innovation_page> {
@@ -22,7 +22,7 @@ class _research_innovation_pageState extends State<research_innovation_page> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Research and Innovation Center'),
-        backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+        backgroundColor: blue,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -46,7 +46,7 @@ class _research_innovation_pageState extends State<research_innovation_page> {
               '\n• Industry interaction'
               '\n •Train Students to make them Industry ready',
               style: GoogleFonts.alegreya(
-                  fontSize: 18, color: logoRed, fontWeight: FontWeight.bold),
+                  fontSize: 18, color: blue, fontWeight: FontWeight.bold),
               textAlign: TextAlign.justify,
             ),
           ),
@@ -67,7 +67,7 @@ class _research_innovation_pageState extends State<research_innovation_page> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10), color: logoRed),
+                        borderRadius: BorderRadius.circular(10), color: blue),
                     child: const Padding(
                       padding: EdgeInsets.only(top: 20, bottom: 20),
                       child: Text(
@@ -94,7 +94,7 @@ class _research_innovation_pageState extends State<research_innovation_page> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10), color: logoRed),
+                        borderRadius: BorderRadius.circular(10), color: blue),
                     child: const Padding(
                       padding: EdgeInsets.only(top: 20, bottom: 20),
                       child: Text(
@@ -119,7 +119,7 @@ class _research_innovation_pageState extends State<research_innovation_page> {
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10), color: logoRed),
+                        borderRadius: BorderRadius.circular(10), color: blue),
                     child: const Padding(
                       padding: EdgeInsets.only(top: 20, bottom: 20),
                       child: Text(

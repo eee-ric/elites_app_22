@@ -11,13 +11,15 @@ class elixir_season_explore extends StatelessWidget {
   final ElixirList elixirList;
 
   const elixir_season_explore(this.elixirList);
-
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(elixirList.elixirTitle),
-        backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+        backgroundColor: blue,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

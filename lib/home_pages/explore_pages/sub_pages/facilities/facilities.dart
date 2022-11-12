@@ -41,15 +41,15 @@ class _facilitiesState extends State<facilities> {
                 facilitiesListFromJson['facilities_front_image'],
             facilitiesFrontTitle:
                 facilitiesListFromJson['facilities_front_title'],
-            facilitiesDetailText: facilitiesListFromJson['facilities_detail']))
+            facilitiesDetailText: facilitiesListFromJson['facilities_detail'], facilitiesSpaceDetail: facilitiesListFromJson['facilities_space_detail']))
         .toList();
     setState(() {
       listFacilitiesItems = final_list;
     });
   }
-
-  final logoRed = const Color.fromRGBO(103, 0, 1, 20);
-  final CardBG = const Color.fromRGBO(242, 240, 197, 86);
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
@@ -57,7 +57,7 @@ class _facilitiesState extends State<facilities> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Facilities'),
-          backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+          backgroundColor: blue,
           centerTitle: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -104,11 +104,11 @@ class _facilitiesState extends State<facilities> {
                           children: [
                             //FACILITIES TITLE
                             Container(
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
+                              decoration:  BoxDecoration(
+                                borderRadius: const BorderRadius.only(
                                     bottomRight: Radius.circular(20),
                                     bottomLeft: Radius.circular(20)),
-                                color: Colors.white70,
+                                color: yellow,
                               ),
                               width: MediaQuery.of(context).size.width,
                               child: Column(
@@ -119,7 +119,7 @@ class _facilitiesState extends State<facilities> {
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.secularOne(
                                       fontSize: 22,
-                                      color: logoRed,
+                                      color: blue,
                                     ),
                                     softWrap: true,
                                     overflow: TextOverflow.fade,
@@ -127,11 +127,11 @@ class _facilitiesState extends State<facilities> {
                                   ),
                                   Text(
                                     listFacilitiesItems[index]
-                                        .facilitiesFrontTitle,
+                                        .facilitiesSpaceDetail,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.josefinSans(
                                       fontSize: 18,
-                                      color: logoRed,
+                                      color: blue,
                                     ),
                                     softWrap: true,
                                     overflow: TextOverflow.fade,

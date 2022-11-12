@@ -50,6 +50,8 @@ dependencies:
   youtube_player_flutter:
   cached_video_player:
   align_positioned:
+  clipboard:
+  font_awesome_flutter:
 
 
 
@@ -95,6 +97,7 @@ flutter:
   assets:
    - assets/images/elites_logo.png
    - assets/images/nmamit.jpg
+   - assets/images/land_map.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
