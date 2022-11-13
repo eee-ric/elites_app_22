@@ -9,6 +9,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_main_page.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/facilities/facilities.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/funding/funding.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/higher_studies/higher_studies.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/placements/placements.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/research_innovation/research_innovation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -94,11 +96,22 @@ class _exploreState extends State<explore> {
                       MaterialPageRoute(
                           builder: (context) =>
                               const research_innovation_page()));
+                } else if (index == 4) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const placement_less()));
+                }else if (index == 5) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const higher_studies_less()));
                 }
               },
               child: Padding(
-                padding: const EdgeInsets.only(
-                    right: 10, left: 10, top: 10),
+                padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
                 child: Container(
                   height: 120,
                   decoration: BoxDecoration(

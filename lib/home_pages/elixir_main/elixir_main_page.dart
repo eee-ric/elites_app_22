@@ -4,11 +4,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/elixir_main/elixir_main_event_list.dart';
 import 'package:elites_app_22/home_pages/elixir_main/elixir_event_detail_.dart';
+import 'package:elites_app_22/home_pages/elixir_main/projects.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class elixir_main_page extends StatefulWidget {
   const elixir_main_page({Key? key}) : super(key: key);
@@ -102,7 +104,7 @@ class _elixir_main_pageState extends State<elixir_main_page> {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
+            padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
             child: Container(
               height: 200,
               decoration: BoxDecoration(
@@ -114,65 +116,86 @@ class _elixir_main_pageState extends State<elixir_main_page> {
               )),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
-            child: Container(
-              height: 130,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25), color: blueBg),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Container(
-                      width: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: yellow),
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Center(
-                          child: (FaIcon(
-                            FontAwesomeIcons.map,
-                            color: blue,
-                            size: 20,
-                          )),
+          GestureDetector(
+            onTap: () async {
+              const double latitude = 13.182887;
+              const double longitude = 74.935400;
+              final Uri url = Uri.parse(
+                  'https://www.google.com/maps/search/$latitude,$longitude');
+              open_browser_url(url: url, inApp: true);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
+              child: Container(
+                height: 130,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: blueBg,
+                      blurRadius: 5.0,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(25),
+                  image: const DecorationImage(
+                    image: AssetImage('assets/images/land_map.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Container(
+                        width: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: yellow),
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Center(
+                            child: (FaIcon(
+                              FontAwesomeIcons.map,
+                              color: blue,
+                              size: 20,
+                            )),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10, left: 20, right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Map',
-                          style:
-                              GoogleFonts.secularOne(fontSize: 42, color: blue),
-                        ),
-                        Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: blue),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: FaIcon(
-                                FontAwesomeIcons.diamondTurnRight,
-                                color: yellow,
-                              ),
-                            ))
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 10, left: 20, right: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Map',
+                            style: GoogleFonts.secularOne(
+                                fontSize: 42, color: blue),
+                          ),
+                          Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: blue),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FaIcon(
+                                  FontAwesomeIcons.diamondTurnRight,
+                                  color: yellow,
+                                ),
+                              ))
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 20),
             child: Container(
               decoration: BoxDecoration(color: yellow),
               child: Column(
@@ -226,7 +249,26 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                           ],
                         );
                       }),
+
                 ],
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>elixir_projects()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25), color: blueBg),
+                child: Center(
+                    child: Text(
+                      'Pojects',
+                      style: GoogleFonts.secularOne(fontSize: 34, color: blue),
+                    )),
               ),
             ),
           ),
@@ -255,5 +297,11 @@ class _elixir_main_pageState extends State<elixir_main_page> {
           const Center(child: CircularProgressIndicator()),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
+  }
+
+  void open_browser_url({required Uri url, required bool inApp}) async {
+    if (await canLaunchUrl(url)) {
+      await (launchUrl(url, mode: LaunchMode.externalApplication));
+    }
   }
 }

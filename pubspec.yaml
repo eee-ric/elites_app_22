@@ -52,6 +52,9 @@ dependencies:
   align_positioned:
   clipboard:
   font_awesome_flutter:
+  animated_text_kit:
+  url_launcher:
+  maps_launcher:
 
 
 
@@ -98,6 +101,7 @@ flutter:
    - assets/images/elites_logo.png
    - assets/images/nmamit.jpg
    - assets/images/land_map.png
+   - assets/images/elixir_logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -47,7 +47,7 @@ class _project_video_playerState extends State<project_video_player> {
         progressIndicatorColor: blue,
         progressColors:  ProgressBarColors(
           playedColor: blue,
-          handleColor: Color.fromRGBO(135, 0, 0, 27),
+          handleColor: blueBg,
         ),
         onReady: () {
           _controller.addListener(() {});
@@ -58,7 +58,7 @@ class _project_video_playerState extends State<project_video_player> {
             ? null
             : AppBar(
                 title: Text(projectVideoList.projectName),
-                backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+                backgroundColor:blue,
                 centerTitle: true,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(

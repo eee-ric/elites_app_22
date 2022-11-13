@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -85,18 +86,18 @@ class _home_main_pageState extends State<home_main_page> {
                       child: Text(
                         'ELECTRICAL AND ELECTRONICS',
                         style: GoogleFonts.secularOne(
-                            fontWeight: FontWeight.w400,
-                            color: blue,
-                            // shadows: <Shadow>[
-                            //    Shadow(
-                            //       color: yellow,
-                            //       blurRadius: 25,
-                            //       )
-                            // ,Shadow(
-                            //       color: blue,
-                            //       blurRadius:15,
-                            //       offset: const Offset(1, 1))
-                            // ]
+                          fontWeight: FontWeight.w400,
+                          color: blue,
+                          // shadows: <Shadow>[
+                          //    Shadow(
+                          //       color: yellow,
+                          //       blurRadius: 25,
+                          //       )
+                          // ,Shadow(
+                          //       color: blue,
+                          //       blurRadius:15,
+                          //       offset: const Offset(1, 1))
+                          // ]
                         ),
                       ),
                     ),
@@ -158,56 +159,77 @@ class _home_main_pageState extends State<home_main_page> {
                 padding: const EdgeInsets.only(
                     right: 20, left: 20, top: 30, bottom: 10),
                 child: Container(
-
                   alignment: Alignment.bottomLeft,
                   height: 200,
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: borderRadius),
+                  decoration:
+                      BoxDecoration(color: yellow, borderRadius: borderRadius),
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "ELIXIR",
-                          style: GoogleFonts.secularOne(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 50,
-                              color: blue,
-                              shadows: <Shadow>[
-                                 const Shadow(
-                                    offset: Offset(0, 0),
-                                    blurRadius: 20.0,
-                                    color: Colors.white),
-                                 Shadow(
-                                    offset: Offset(2.0, 2.0),
-                                    blurRadius: 10.0,
-                                    color: blue),
-                              ]),
+                        Center(
+                          child: AnimatedTextKit(
+                            repeatForever: true,
+                            animatedTexts: [
+                              FlickerAnimatedText("ELIXIR",
+                                  textStyle: GoogleFonts.secularOne(
+                                      fontSize: 60,
+                                      color: blue,
+                                      shadows: <Shadow>[
+                                        const Shadow(
+                                            offset: Offset(0, 0),
+                                            blurRadius: 20.0,
+                                            color: Colors.white),
+                                        Shadow(
+                                            offset: Offset(2.0, 2.0),
+                                            blurRadius: 10.0,
+                                            color: blue),
+                                      ])), FadeAnimatedText("ELIXIR",
+                                  textStyle: GoogleFonts.secularOne(
+                                      fontSize: 60,
+                                      color: blueBg,
+                                      shadows: <Shadow>[
+                                        const Shadow(
+                                            offset: Offset(0, 0),
+                                            blurRadius: 20.0,
+                                            color: Colors.white),
+                                        Shadow(
+                                            offset: Offset(2.0, 2.0),
+                                            blurRadius: 10.0,
+                                            color: blue),
+                                      ]))
+                            ],
+                          ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children:  <Widget>[
-                                Text('Time : 21 NOV 22',style: TextStyle(color: blue),),
-                                Text('Venue : Sadananda Auditorium',style: TextStyle(color: blue),)
+                              children: <Widget>[
+                                Text(
+                                  'Time : 21 NOV 22',
+                                  style: TextStyle(color: blue),
+                                ),
+                                Text(
+                                  'Venue : Sadananda Auditorium',
+                                  style: TextStyle(color: blue),
+                                )
                               ],
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  color: yellow,
+                                  color: blue,
                                   borderRadius: BorderRadius.circular(15)),
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: (Text(
                                   'Explore',
                                   style: GoogleFonts.secularOne(
-                                      fontSize: 18, color: blue),
+                                      fontSize: 18, color: yellow),
                                 )),
                               ),
                             ),
@@ -230,6 +252,12 @@ class _home_main_pageState extends State<home_main_page> {
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Container(
           decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: blueBg,
+                blurRadius: 5.0,
+              ),
+            ],
             borderRadius: BorderRadius.circular(25),
             image: DecorationImage(
                 image: imageProvider,

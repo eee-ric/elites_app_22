@@ -1,24 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir/elixir_list.dart';
-import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/elites_sub_pages/elixir/firebase_api.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
-import 'firebase_file.dart';
+import '../elites/elites_sub_pages/elixir/firebase_api.dart';
+import '../elites/elites_sub_pages/elixir/firebase_file.dart';
 
-class elixir_season_explore extends StatelessWidget {
-  final ElixirList elixirList;
-
-  const elixir_season_explore(this.elixirList);
+class placement_less extends StatelessWidget {
+  const placement_less({Key? key}) : super(key: key);
   final blue = const Color.fromRGBO(0, 0, 153, 30);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
   final yellow = const Color.fromRGBO(255, 216, 0, 50);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(elixirList.elixirTitle),
+        title: Text('Placements'),
         backgroundColor: blue,
         centerTitle: true,
         shape: const RoundedRectangleBorder(
@@ -28,41 +24,30 @@ class elixir_season_explore extends StatelessWidget {
           ),
         ),
       ),
-      body: elixir_season_image(elixirList),
+      body: placement_full(),
     );
   }
 }
 
-class elixir_season_image extends StatefulWidget {
-  final ElixirList elixirList;
-
-  const elixir_season_image(this.elixirList);
-
-  @override
-  State<elixir_season_image> createState() {
-    return _elixir_season_imageState(elixirList);
-  }
-}
-
-class _elixir_season_imageState extends State<elixir_season_image> {
-  late final ElixirList elixirList;
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
-  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
-
-  _elixir_season_imageState(this.elixirList);
-
+class placement_full extends StatefulWidget {
   late Future<List<FirebaseFile>> futureFiles;
 
   @override
+  State<placement_full> createState() => _placement_fullState();
+}
+
+class _placement_fullState extends State<placement_full> {
+  late Future<List<FirebaseFile>> futureFiles;
+  @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    // futureFiles =
-    //     FirebaseStorage.instance.ref(elixirList.elixirImageGallery).listAll();
-    String folderName = '${elixirList.elixirImageGallery}/';
+    String folderName = 'placements/';
     futureFiles = FirebaseApi.listAll(folderName);
   }
-
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<FirebaseFile>>(
@@ -94,14 +79,14 @@ class _elixir_season_imageState extends State<elixir_season_image> {
         imageBuilder: (context, imageProvider) => Padding(
           padding: const EdgeInsets.all(10.0),
           child: AspectRatio(
-            aspectRatio:16/9 ,
+            aspectRatio: 16 / 9,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
-                    ),
+                  image: imageProvider,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

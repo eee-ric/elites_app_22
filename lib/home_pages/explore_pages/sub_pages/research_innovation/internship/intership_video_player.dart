@@ -18,6 +18,9 @@ class internship_video_player extends StatelessWidget {
 }
 
 class video_body extends StatefulWidget {
+  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(255, 216, 0, 50);
   final InternshipList internshipList;
 
   const video_body(this.internshipList);
@@ -56,7 +59,7 @@ class _video_bodyState extends State<video_body> {
           ? null
           : AppBar(
               title: Text(internshipList.internshipStep),
-              backgroundColor: const Color.fromRGBO(103, 0, 1, 20),
+              backgroundColor: blue,
               centerTitle: true,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -72,7 +75,7 @@ class _video_bodyState extends State<video_body> {
           progressIndicatorColor: blue,
           progressColors:  ProgressBarColors(
             playedColor: blue,
-            handleColor: Color.fromRGBO(135, 0, 0, 27),
+            handleColor: blueBg,
           ),
           onReady: () {
             _controller.addListener(() {});
