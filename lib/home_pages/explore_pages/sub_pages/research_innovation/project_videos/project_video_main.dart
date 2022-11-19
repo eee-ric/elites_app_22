@@ -41,9 +41,9 @@ class _project_video_mainState extends State<project_video_main> {
       listProjectVideoItems = finalList;
     });
   }
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +109,7 @@ class _project_video_mainState extends State<project_video_main> {
                             boxShadow: [
                               BoxShadow(color: blue, blurRadius: 10)
                             ],
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                                 bottomRight: Radius.circular(20),
                                 topRight: Radius.circular(20)),
                             color: Colors.white,

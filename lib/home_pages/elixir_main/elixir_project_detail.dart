@@ -19,9 +19,9 @@ class elixir_project_less extends StatelessWidget {
 }
 
 class elixir_project_full extends StatefulWidget {
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
   final ElixirProjectList elixirProjectList;
 
   const elixir_project_full(this.elixirProjectList);
@@ -58,7 +58,10 @@ class _elixir_project_fullState extends State<elixir_project_full> {
       appBar: _fullScreen
           ? null
           : AppBar(
-              title: Text(elixirProjectList.elixirProjectListName),
+              title: Text(
+                elixirProjectList.elixirProjectListName,
+                style: const TextStyle(overflow: TextOverflow.fade),
+              ),
               backgroundColor: blue,
               centerTitle: true,
               shape: const RoundedRectangleBorder(
@@ -75,7 +78,7 @@ class _elixir_project_fullState extends State<elixir_project_full> {
                 imageUrl: elixirProjectList.elixirProjectListImage),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             child: Center(
               child: Text(
                 elixirProjectList.elixirProjectListName.toUpperCase(),
@@ -83,12 +86,15 @@ class _elixir_project_fullState extends State<elixir_project_full> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20,left: 20,right: 20),
-            child: Divider(height: 1,color: blue,),
+          const Padding(
+            padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+            child: Divider(
+              height: 1,
+              color: blue,
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             child: Center(
               child: Text(elixirProjectList.elixirProjectListDescription,
                   textAlign: TextAlign.justify,
@@ -96,16 +102,19 @@ class _elixir_project_fullState extends State<elixir_project_full> {
                       color: blue, fontSize: 18, fontWeight: FontWeight.w500)),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Divider(height: 1,color: blue,),
+          const Padding(
+            padding: EdgeInsets.all(20),
+            child: Divider(
+              height: 1,
+              color: blue,
+            ),
           ),
           YoutubePlayerBuilder(
             player: YoutubePlayer(
               controller: _controller,
               showVideoProgressIndicator: true,
               progressIndicatorColor: blue,
-              progressColors: ProgressBarColors(
+              progressColors: const ProgressBarColors(
                 playedColor: blue,
                 handleColor: blueBg,
               ),

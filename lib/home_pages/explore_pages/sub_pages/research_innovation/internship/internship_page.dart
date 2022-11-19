@@ -14,10 +14,9 @@ class internship_page extends StatefulWidget {
 }
 
 
-final blue = const Color.fromRGBO(0, 0, 153, 30);
-final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-final yellow = const Color.fromRGBO(255, 216, 0, 50);
-
+const blue = Color.fromRGBO(46, 49, 146, 38);
+const blueBg = Color.fromRGBO(149, 157, 244, 77);
+const yellow = Color.fromRGBO(253,185,19, 50);
 final borderRadius = BorderRadius.circular(25);
 
 class _internship_pageState extends State<internship_page> {
@@ -47,6 +46,10 @@ class _internship_pageState extends State<internship_page> {
       listInternshipItems = finalList;
     });
   }
+
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
+  final blueBg = const Color.fromRGBO(149, 157, 244, 77);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +125,7 @@ class _internship_pageState extends State<internship_page> {
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(20),
                                 topRight: Radius.circular(20)),
-                            color: Colors.black12
-                            ,
+                            color: Color.fromRGBO(255, 179, 0, 50)
                           ),
                           width: MediaQuery.of(context).size.width * 0.55,
                           child: Column(

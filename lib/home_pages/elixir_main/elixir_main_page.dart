@@ -4,6 +4,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/elixir_main/elixir_main_event_list.dart';
 import 'package:elites_app_22/home_pages/elixir_main/elixir_event_detail_.dart';
+import 'package:elites_app_22/home_pages/elixir_main/invitation_video.dart';
+import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/layout_main.dart';
+import 'package:elites_app_22/home_pages/elixir_main/layout_pdf/pdf_layout.dart';
 import 'package:elites_app_22/home_pages/elixir_main/projects.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -11,6 +14,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'elixir_project_lists.dart';
 
 class elixir_main_page extends StatefulWidget {
   const elixir_main_page({Key? key}) : super(key: key);
@@ -82,9 +87,9 @@ class _elixir_main_pageState extends State<elixir_main_page> {
     });
   }
 
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
@@ -103,18 +108,73 @@ class _elixir_main_pageState extends State<elixir_main_page> {
       ),
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
-            child: Container(
-              height: 200,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25), color: blueBg),
-              child: Center(
-                  child: Text(
-                'Invitation',
-                style: GoogleFonts.secularOne(fontSize: 24, color: blue),
-              )),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => invitation_video()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10, left: 20, top: 20),
+                  child: Container(
+                    height: 150,
+                    width: MediaQuery.of(context).size.width * 0.42,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25), color: blueBg),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.mark_email_unread,
+                          color: blue,
+                          size: 34,
+                        ),
+                        Center(
+                            child: Text(
+                          'Invitation',
+                          style:
+                              GoogleFonts.secularOne(fontSize: 24, color: blue),
+                        )),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>layout_main()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20, left: 10, top: 20),
+                  child: Container(
+                    height: 150,
+                    width: MediaQuery.of(context).size.width * 0.42,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25), color: blueBg),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.layers_outlined,
+                          color: blue,
+                          size: 34,
+                        ),
+                        Center(
+                            child: Text(
+                          'Layout',
+                          style:
+                              GoogleFonts.secularOne(fontSize: 24, color: blue),
+                        )),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           GestureDetector(
             onTap: () async {
@@ -127,7 +187,7 @@ class _elixir_main_pageState extends State<elixir_main_page> {
             child: Padding(
               padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
               child: Container(
-                height: 130,
+                height: MediaQuery.of(context).size.height * 0.15,
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -170,10 +230,15 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Map',
-                            style: GoogleFonts.secularOne(
-                                fontSize: 42, color: blue),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.06,
+                            child: FittedBox(
+                              fit: BoxFit.fill,
+                              child: Text(
+                                'Map',
+                                style: GoogleFonts.secularOne(color: blue),
+                              ),
+                            ),
                           ),
                           Container(
                               decoration: BoxDecoration(
@@ -205,9 +270,10 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: Text(
-                        'Events :',
+                        'Events',
+                        textAlign: TextAlign.left,
                         style:
-                            GoogleFonts.secularOne(fontSize: 24, color: blue),
+                            GoogleFonts.secularOne(color: blue, fontSize: 24),
                       ),
                     ),
                   ),
@@ -249,26 +315,126 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                           ],
                         );
                       }),
-
                 ],
               ),
             ),
           ),
           GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>elixir_projects()));
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => elixir_projects()));
             },
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Container(
                 height: 200,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25), color: blueBg),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: blueBg,
+                      blurRadius: 5.0,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(25),
+                  image: const DecorationImage(
+                    image: AssetImage('assets/images/swayam.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
                 child: Center(
+                    child: Container(
+                  decoration:
+                      BoxDecoration(color: blue, borderRadius: borderRadius),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: Text(
-                      'Pojects',
-                      style: GoogleFonts.secularOne(fontSize: 34, color: blue),
-                    )),
+                      'Projects',
+                      style: GoogleFonts.secularOne(
+                          fontSize: 34,
+                          color: Colors.white,
+                          shadows: <Shadow>[
+                            const Shadow(
+                                offset: Offset(0, 0),
+                                blurRadius: 20.0,
+                                color: Colors.white),
+                            Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 10.0,
+                                color: blue),
+                          ]),
+                    ),
+                  ),
+                )),
+              ),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(color: yellow),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      final Uri url =
+                          Uri.parse("https://www.instagram.com/eee_nmamit/");
+                      open_browser_url(url: url, inApp: true);
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const FaIcon(FontAwesomeIcons.instagram),
+                        Text(
+                          "eee_nmamit",
+                          style: GoogleFonts.secularOne(
+                            color: Colors.blue,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      final Uri url = Uri.parse(
+                          "https://www.linkedin.com/in/electrical-and-electronics-engineering-316a62176/");
+                      open_browser_url(url: url, inApp: true);
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const FaIcon(FontAwesomeIcons.linkedin),
+                        Text(
+                          "EEE NMAMIT",
+                          style: GoogleFonts.secularOne(
+                            color: Colors.blue,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      final Uri url = Uri.parse(
+                          "https://www.youtube.com/channel/UC7ve97BbEy44KPFca2FgxJg");
+                      open_browser_url(url: url, inApp: true);
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const FaIcon(FontAwesomeIcons.youtube),
+                        Text(
+                          "Elites NMAMIT",
+                          style: GoogleFonts.secularOne(
+                            color: Colors.blue,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

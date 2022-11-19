@@ -3,11 +3,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elites_app_22/home_pages/elixir_main/elixir_main_page.dart';
+import 'package:elites_app_22/home_pages/explore_pages/sub_pages/elites/leader_board_main.dart';
 import 'package:elites_app_22/home_pages/explore_pages/sub_pages/research_innovation/internship/internship_page.dart';
+import 'package:elites_app_22/home_pages/main_home/leader_board_list.dart';
 import 'package:elites_app_22/home_pages/main_home/project_slide_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class home_main_page extends StatefulWidget {
   const home_main_page({Key? key}) : super(key: key);
@@ -48,16 +52,18 @@ class _home_main_pageState extends State<home_main_page> {
   }
 
   final CarouselController controller = CarouselController();
-
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('EEE NMAMIT'),
+          title: Padding(
+            padding: const EdgeInsets.all(80),
+            child: Image.asset("assets/images/nitte_logo.png"),
+          ),
           backgroundColor: blue,
           centerTitle: true,
           shape: const RoundedRectangleBorder(
@@ -75,7 +81,7 @@ class _home_main_pageState extends State<home_main_page> {
               child: Column(
                 children: [
                   Text(
-                    'Department Of',
+                    'Department of',
                     style: GoogleFonts.secularOne(
                         fontSize: 22, color: Colors.blue),
                   ),
@@ -115,6 +121,9 @@ class _home_main_pageState extends State<home_main_page> {
                 builder: (context, AsyncSnapshot snap) {
                   readData();
                   if (snap.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if(snap.hasError){
                     return const Center(child: CircularProgressIndicator());
                   }
                   List slideList = snap.data.toList();
@@ -175,6 +184,7 @@ class _home_main_pageState extends State<home_main_page> {
                             repeatForever: true,
                             animatedTexts: [
                               FlickerAnimatedText("ELIXIR",
+                                  speed: const Duration(milliseconds: 1000),
                                   textStyle: GoogleFonts.secularOne(
                                       fontSize: 60,
                                       color: blue,
@@ -184,20 +194,22 @@ class _home_main_pageState extends State<home_main_page> {
                                             blurRadius: 20.0,
                                             color: Colors.white),
                                         Shadow(
-                                            offset: Offset(2.0, 2.0),
+                                            offset: const Offset(2.0, 2.0),
                                             blurRadius: 10.0,
                                             color: blue),
-                                      ])), FadeAnimatedText("ELIXIR",
+                                      ])),
+                              FadeAnimatedText("ELIXIR",
+                                  duration: const Duration(milliseconds: 800),
                                   textStyle: GoogleFonts.secularOne(
                                       fontSize: 60,
-                                      color: blueBg,
+                                      color: blue,
                                       shadows: <Shadow>[
                                         const Shadow(
                                             offset: Offset(0, 0),
                                             blurRadius: 20.0,
                                             color: Colors.white),
                                         Shadow(
-                                            offset: Offset(2.0, 2.0),
+                                            offset: const Offset(2.0, 2.0),
                                             blurRadius: 10.0,
                                             color: blue),
                                       ]))
@@ -241,6 +253,50 @@ class _home_main_pageState extends State<home_main_page> {
                 ),
               ),
             ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => leader_board_main()));
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 20, left: 20, right: 20, top: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: borderRadius,
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: blueBg,
+                        blurRadius: 5.0,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 50, left: 50, right: 50),
+                        child: Image.asset(
+                          'assets/images/elites_logo.png',
+                          scale: 5,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          'Leaderboard',
+                          style:
+                              GoogleFonts.secularOne(color: blue, fontSize: 24),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ));
   }

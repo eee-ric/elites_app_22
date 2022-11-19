@@ -18,10 +18,9 @@ class project_slide_detail extends StatefulWidget {
 
 class _project_slide_detailState extends State<project_slide_detail> {
   final borderRadius = BorderRadius.circular(25);
-
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
 
   late Stream slides;
   int activeIndex = 0;
@@ -45,12 +44,26 @@ class _project_slide_detailState extends State<project_slide_detail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Projects'),
+        backgroundColor: blue,
+        centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(25),
+          ),
+        ),
+      ),
       body: StreamBuilder(
           stream: slides,
           builder: (context, AsyncSnapshot snap) {
             List slideList = snap.data.toList();
 
             if (snap.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if(slideList.isEmpty){
               return const Center(child: CircularProgressIndicator());
             }
 
@@ -63,7 +76,7 @@ class _project_slide_detailState extends State<project_slide_detail> {
                     return _buildStoryPage(slideList[index]);
                   },
                   options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height,
+                      height: MediaQuery.of(context).size.height*0.8,
                       enlargeCenterPage: true,
                       onPageChanged: (index, reason) =>
                           setState(() => activeIndex = index),

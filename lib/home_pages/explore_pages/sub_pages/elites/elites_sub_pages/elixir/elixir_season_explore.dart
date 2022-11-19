@@ -11,9 +11,9 @@ class elixir_season_explore extends StatelessWidget {
   final ElixirList elixirList;
 
   const elixir_season_explore(this.elixirList);
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +46,9 @@ class elixir_season_image extends StatefulWidget {
 
 class _elixir_season_imageState extends State<elixir_season_image> {
   late final ElixirList elixirList;
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
 
   _elixir_season_imageState(this.elixirList);
 

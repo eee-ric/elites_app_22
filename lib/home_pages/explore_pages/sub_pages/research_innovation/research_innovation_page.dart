@@ -11,9 +11,9 @@ class research_innovation_page extends StatefulWidget {
   State<research_innovation_page> createState() =>
       _research_innovation_pageState();
 }
-const blue = Color.fromRGBO(0, 0, 153, 30);
+const blue = Color.fromRGBO(46, 49, 146, 38);
 const blueBg = Color.fromRGBO(149, 157, 244, 77);
-const yellow = Color.fromRGBO(255, 216, 0, 50);
+const yellow = Color.fromRGBO(253,185,19, 50);
 final borderRadius = BorderRadius.circular(25);
 
 class _research_innovation_pageState extends State<research_innovation_page> {

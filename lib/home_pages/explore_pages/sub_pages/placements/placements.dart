@@ -6,9 +6,9 @@ import '../elites/elites_sub_pages/elixir/firebase_file.dart';
 
 class placement_less extends StatelessWidget {
   const placement_less({Key? key}) : super(key: key);
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +45,9 @@ class _placement_fullState extends State<placement_full> {
     String folderName = 'placements/';
     futureFiles = FirebaseApi.listAll(folderName);
   }
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const Color.fromRGBO(47, 47, 147,38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(255, 179, 0, 50);
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<FirebaseFile>>(

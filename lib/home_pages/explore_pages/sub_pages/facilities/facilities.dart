@@ -47,9 +47,9 @@ class _facilitiesState extends State<facilities> {
       listFacilitiesItems = final_list;
     });
   }
-  final blue = const Color.fromRGBO(0, 0, 153, 30);
+  final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(255, 216, 0, 50);
+  final yellow = const Color.fromRGBO(253,185,19, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
