@@ -122,7 +122,7 @@ class _tease_video_fullState extends State<tease_video_full> {
                 _controller.pause();
               } else {
                 // If the video is paused, play it.
-                _controller.play();
+                _controller.pause();
               }
             });
             Navigator.push(context, MaterialPageRoute(builder: (context)=>home_page()));

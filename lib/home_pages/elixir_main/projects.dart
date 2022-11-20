@@ -78,6 +78,14 @@ class _elixir_projectsState extends State<elixir_projects> {
                 listElixirProjectItems[index];
             return GestureDetector(
               onTap: () {
+                setState(() {
+                  if (_controller.value.isPlaying) {
+                    _controller.pause();
+                  } else {
+                    // If the video is paused, play it.
+                    _controller.play();
+                  }
+                });
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -101,16 +109,16 @@ class _elixir_projectsState extends State<elixir_projects> {
                           Padding(
                             padding:
                                 const EdgeInsets.only(top: 20, left: 20, right: 20),
-                            child: Container(
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width*0.5,
                               child: Text(
                                 listElixirProjectItems[index]
                                     .elixirProjectListName
                                     .toUpperCase(),
-                                textAlign: TextAlign.center,
+                                textAlign: TextAlign.start,
                                 style: GoogleFonts.secularOne(fontSize: 22),
                                 softWrap: true,
                                 overflow: TextOverflow.fade,
-                                maxLines: 4,
                               ),
                             ),
                           ),

@@ -207,20 +207,13 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Container(
-                        width: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: yellow),
+                            color: Colors.transparent),
                         alignment: Alignment.topLeft,
                         child: Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Center(
-                            child: (FaIcon(
-                              FontAwesomeIcons.map,
-                              color: blue,
-                              size: 20,
-                            )),
-                          ),
+
                         ),
                       ),
                     ),

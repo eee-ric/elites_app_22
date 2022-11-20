@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elites_app_22/home_pages/elixir_main/ric_project_list/ric_pro_main.dart';
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/layout_global_detail.dart';
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/live.dart';
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/top_left_list.dart';
@@ -110,17 +111,17 @@ class _layout_right_mainState extends State<layout_right_main> {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const liveCeremony()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ric_project()));
             },
             child: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(top: 20, right: 20),
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: MediaQuery.of(context).size.height * 0.15,
                 decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: blue),
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: blueBg,
@@ -128,12 +129,12 @@ class _layout_right_mainState extends State<layout_right_main> {
                     ),
                   ],
                   borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      bottomLeft: Radius.circular(25)),
+                      topRight: Radius.circular(25),
+                      bottomRight: Radius.circular(25)),
                 ),
                 child: Center(
                   child: Text(
-                    'Inaugural Ceremony ',
+                    'Projects ',
                     style: GoogleFonts.secularOne(
                         fontSize: 30,
                         color: blue,
@@ -142,10 +143,6 @@ class _layout_right_mainState extends State<layout_right_main> {
                               offset: Offset(0, 0),
                               blurRadius: 20.0,
                               color: Colors.white),
-                          Shadow(
-                              offset: const Offset(2.0, 2.0),
-                              blurRadius: 10.0,
-                              color: blue),
                         ]),
                   ),
                 ),
@@ -165,6 +162,8 @@ class _layout_right_mainState extends State<layout_right_main> {
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: MediaQuery.of(context).size.height * 0.15,
                 decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: blue),
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: blueBg,
@@ -175,7 +174,7 @@ class _layout_right_mainState extends State<layout_right_main> {
                 ),
                 child: Center(
                   child: Text(
-                    'Inaugural Ceremony ',
+                    'Inaugural Stage',
                     style: GoogleFonts.secularOne(
                         fontSize: 30,
                         color: blue,
@@ -184,10 +183,7 @@ class _layout_right_mainState extends State<layout_right_main> {
                               offset: Offset(0, 0),
                               blurRadius: 20.0,
                               color: Colors.white),
-                          Shadow(
-                              offset: const Offset(2.0, 2.0),
-                              blurRadius: 10.0,
-                              color: blue),
+
                         ]),
                   ),
                 ),
@@ -274,10 +270,7 @@ class _layout_right_mainState extends State<layout_right_main> {
                                                   .size
                                                   .width *
                                               .35,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .22,
+                                          height: 100,
                                           decoration: BoxDecoration(
                                             // boxShadow: [
                                             //   new BoxShadow(color: logoRed, blurRadius: 5)
@@ -327,7 +320,6 @@ class _layout_right_mainState extends State<layout_right_main> {
                                               fontSize: 16),
                                           softWrap: true,
                                           overflow: TextOverflow.fade,
-                                          maxLines: 4,
                                         ),
                                       ),
                                     ],
@@ -340,14 +332,14 @@ class _layout_right_mainState extends State<layout_right_main> {
                       ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Align(
                           alignment: Alignment.topRight,
                           child: SizedBox(
                             height: MediaQuery.of(context).size.height * 0.8,
-                            width: MediaQuery.of(context).size.height * 0.18,
+                            width: MediaQuery.of(context).size.height * 0.15,
                             child: ListView.builder(
                               itemCount: list1.length,
                               itemBuilder: (BuildContext context, int index) {
@@ -450,7 +442,6 @@ class _layout_right_mainState extends State<layout_right_main> {
                                                   fontSize: 16),
                                               softWrap: true,
                                               overflow: TextOverflow.fade,
-                                              maxLines: 4,
                                             ),
                                           ),
                                         ],
@@ -466,7 +457,7 @@ class _layout_right_mainState extends State<layout_right_main> {
                           alignment: Alignment.topLeft,
                           child: SizedBox(
                             height: MediaQuery.of(context).size.height * 0.8,
-                            width: MediaQuery.of(context).size.height * 0.18,
+                            width: MediaQuery.of(context).size.height * 0.15,
                             child: ListView.builder(
                               itemCount: list2.length,
                               itemBuilder: (BuildContext context, int index) {
@@ -570,7 +561,6 @@ class _layout_right_mainState extends State<layout_right_main> {
                                                   fontSize: 16),
                                               softWrap: true,
                                               overflow: TextOverflow.fade,
-                                              maxLines: 4,
                                             ),
                                           ),
                                         ],

@@ -39,13 +39,17 @@ class _elites_main_pageState extends State<elites_main_page> {
     });
   }
 
-  final blue = const  Color.fromRGBO(46, 49, 146, 38);
+  final blue = const Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(253,185,19, 50);
+  final yellow = const Color.fromRGBO(253, 185, 19, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
   Widget build(BuildContext context) {
+    const blue = Color.fromRGBO(46, 49, 146, 38);
+    const blueBg = Color.fromRGBO(149, 157, 244, 77);
+    const yellow = Color.fromRGBO(253, 185, 19, 50);
+    final borderRadius = BorderRadius.circular(25);
     return Scaffold(
         appBar: AppBar(
           title: const Text('ELITES'),
@@ -102,51 +106,58 @@ class _elites_main_pageState extends State<elites_main_page> {
                                 builder: (context) => const elixir()));
                       }
                     },
-                    child: CachedNetworkImage(
-                      imageUrl: listElitesItems[index].elitesImage,
-                      imageBuilder: (context, imageProvider) => Padding(
-                        padding: const EdgeInsets.only(
-                            right: 10, left: 10, top: 10),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * .3,
-                          height: 200,
-                          decoration: BoxDecoration(
-// boxShadow: [
-//   new BoxShadow(color: logoRed, blurRadius: 5)
-// ],
-                            borderRadius: borderRadius,
-                            image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.cover,
-                              colorFilter: const ColorFilter.mode(
-                                  Colors.white, BlendMode.colorBurn),
-                            ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        decoration: BoxDecoration(boxShadow: const [
+                          BoxShadow(
+                            color: blueBg,
+                            blurRadius: 5.0,
                           ),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * .5,
-                              child: Center(
-                                child: Text(
-                                  listElitesItems[index].elitesTitle,
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.secularOne(
-                                      fontSize: 60,
-                                      color: Colors.white,
-                                      textStyle: TextStyle(shadows: <Shadow>[
-                                        const Shadow(
-                                            offset: Offset(0, 0),
-                                            blurRadius: 20.0,
-                                            color: Colors.white),
-                                        Shadow(
-                                            offset: const Offset(5.0, 5.0),
-                                            blurRadius: 10.0,
-                                            color: blue),
-                                      ])),
-                                  softWrap: true,
-                                  overflow: TextOverflow.fade,
-                                  maxLines: 4,
+                        ], color: yellow, borderRadius: borderRadius),
+                        child: CachedNetworkImage(
+                          imageUrl: listElitesItems[index].elitesImage,
+                          imageBuilder: (context, imageProvider) => Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * .3,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius: borderRadius,
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0),
+                                child: SizedBox(
+                                  width: MediaQuery.of(context).size.width * .5,
+                                  child: Center(
+                                    child: Text(
+                                      listElitesItems[index].elitesTitle,
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.secularOne(
+                                          fontSize: 60,
+                                          color: Colors.white,
+                                          textStyle:
+                                              TextStyle(shadows: <Shadow>[
+                                            const Shadow(
+                                                offset: Offset(0, 0),
+                                                blurRadius: 20.0,
+                                                color: Colors.white),
+                                            Shadow(
+                                                offset: const Offset(5.0, 5.0),
+                                                blurRadius: 10.0,
+                                                color: blue),
+                                          ])),
+                                      softWrap: true,
+                                      overflow: TextOverflow.fade,
+                                      maxLines: 4,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
