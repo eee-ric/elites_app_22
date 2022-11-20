@@ -5,6 +5,7 @@ import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/layout_glo
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/live.dart';
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/top_left_list.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class layout_right_main extends StatefulWidget {
@@ -183,7 +184,6 @@ class _layout_right_mainState extends State<layout_right_main> {
                               offset: Offset(0, 0),
                               blurRadius: 20.0,
                               color: Colors.white),
-
                         ]),
                   ),
                 ),
@@ -194,12 +194,27 @@ class _layout_right_mainState extends State<layout_right_main> {
             color: blue,
           ),
           Row(
+            children: [
+              const SizedBox(
+                width: 60,
+              ),
+              Text(
+                "Move Right",
+                style: GoogleFonts.secularOne(color: blue),
+              ),
+              FaIcon(
+                Icons.keyboard_double_arrow_right,
+                color: blue,
+              )
+            ],
+          ),
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.15,
-                height: MediaQuery.of(context).size.height * 0.95,
+                height: MediaQuery.of(context).size.height,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(
@@ -225,7 +240,7 @@ class _layout_right_mainState extends State<layout_right_main> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.15,
+                        height: 180,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -247,6 +262,7 @@ class _layout_right_mainState extends State<layout_right_main> {
                                 padding: const EdgeInsets.only(
                                     right: 10, left: 10, top: 10),
                                 child: Container(
+                                  width: 100,
                                   decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -314,7 +330,7 @@ class _layout_right_mainState extends State<layout_right_main> {
                                             MediaQuery.of(context).size.width *
                                                 .35,
                                         child: Text(
-                                          list[index].title,
+                                          list[index].title.toUpperCase(),
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.secularOne(
                                               fontSize: 16),
@@ -330,6 +346,26 @@ class _layout_right_mainState extends State<layout_right_main> {
                           },
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Move Down",
+                          style: GoogleFonts.secularOne(color: blue),
+                        ),
+                        FaIcon(
+                          Icons.keyboard_double_arrow_down,
+                          color: blue,
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                      ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -435,13 +471,16 @@ class _layout_right_mainState extends State<layout_right_main> {
                                                     .size
                                                     .width *
                                                 .35,
-                                            child: Text(
-                                              list1[index].title,
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.secularOne(
-                                                  fontSize: 16),
-                                              softWrap: true,
-                                              overflow: TextOverflow.fade,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                list1[index].title.toUpperCase(),
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.secularOne(
+                                                    fontSize: 16),
+                                                softWrap: true,
+                                                overflow: TextOverflow.fade,
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -554,13 +593,16 @@ class _layout_right_mainState extends State<layout_right_main> {
                                                     .size
                                                     .width *
                                                 .35,
-                                            child: Text(
-                                              list2[index].title,
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.secularOne(
-                                                  fontSize: 16),
-                                              softWrap: true,
-                                              overflow: TextOverflow.fade,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                list2[index].title.toUpperCase(),
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.secularOne(
+                                                    fontSize: 16),
+                                                softWrap: true,
+                                                overflow: TextOverflow.fade,
+                                              ),
                                             ),
                                           ),
                                         ],

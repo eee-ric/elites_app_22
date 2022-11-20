@@ -148,14 +148,13 @@ class _exploreState extends State<explore> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Container(
-                          width: MediaQuery.of(context).size.width * .5,
+                          width: MediaQuery.of(context).size.width * .3,
                           child: Text(
                             listExploreItems[index].exploreTitle,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.secularOne(fontSize: 22),
                             softWrap: true,
                             overflow: TextOverflow.fade,
-                            maxLines: 4,
                           ),
                         ),
                       ),

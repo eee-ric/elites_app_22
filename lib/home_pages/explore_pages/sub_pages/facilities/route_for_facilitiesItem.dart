@@ -52,7 +52,7 @@ class route_for_facilities extends StatelessWidget {
             child: Text(
               facilitiesList.facilitiesDetailText,
               textAlign: TextAlign.center,
-              style: GoogleFonts.josefinSans(color: blue, fontSize: 24),
+              style: GoogleFonts.alegreya(color: blue, fontSize: 16),
             ),
           )
         ],

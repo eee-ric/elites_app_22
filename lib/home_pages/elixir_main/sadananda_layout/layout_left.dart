@@ -5,6 +5,7 @@ import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/layout_glo
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/top_left_list.dart';
 import 'package:elites_app_22/home_pages/events/events_page.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class layout_left_main extends StatefulWidget {
@@ -109,47 +110,46 @@ class _layout_left_mainState extends State<layout_left_main> {
       ),
       body: ListView(
         children: [
-      GestureDetector(
-        onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>ric_project()));
-        },
-        child: Padding(
-        padding: const EdgeInsets.only(top: 20,left: 20),
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * 0.15,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(width: 2,color: blue),
-            boxShadow: [
-              BoxShadow(
-                color: blueBg,
-                blurRadius: 5.0,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ric_project()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.15,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(width: 2, color: blue),
+                  boxShadow: [
+                    BoxShadow(
+                      color: blueBg,
+                      blurRadius: 5.0,
+                    ),
+                  ],
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      bottomLeft: Radius.circular(25)),
+                ),
+                child: Center(
+                  child: Text(
+                    'R.I.C ',
+                    style: GoogleFonts.secularOne(
+                        fontSize: 30,
+                        color: blue,
+                        shadows: <Shadow>[
+                          const Shadow(
+                              offset: Offset(0, 0),
+                              blurRadius: 10.0,
+                              color: Colors.white),
+                        ]),
+                  ),
+                ),
               ),
-            ],
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(25),
-                bottomLeft: Radius.circular(25)),
-          ),
-          child: Center(
-            child: Text(
-              'R.I.C ',
-              style: GoogleFonts.secularOne(
-                  fontSize: 30,
-                  color: blue,
-                  shadows: <Shadow>[
-                    const Shadow(
-                        offset: Offset(0, 0),
-                        blurRadius: 10.0,
-                        color: Colors.white),
-
-                  ]),
             ),
           ),
-        ),
-    ),
-      ),
-
           Padding(
             padding: const EdgeInsets.all(20),
             child: GestureDetector(
@@ -162,7 +162,7 @@ class _layout_left_mainState extends State<layout_left_main> {
                 height: MediaQuery.of(context).size.height * 0.15,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  border: Border.all(width: 2,color: blue),
+                  border: Border.all(width: 2, color: blue),
                   boxShadow: [
                     BoxShadow(
                       color: blueBg,
@@ -182,7 +182,6 @@ class _layout_left_mainState extends State<layout_left_main> {
                               offset: Offset(0, 0),
                               blurRadius: 20.0,
                               color: Colors.white),
-
                         ]),
                   ),
                 ),
@@ -191,6 +190,21 @@ class _layout_left_mainState extends State<layout_left_main> {
           ),
           Divider(
             color: blue,
+          ),
+          Row(
+            children: [
+              const SizedBox(
+                width: 20,
+              ),
+              Text(
+                "Move Right",
+                style: GoogleFonts.secularOne(color: blue),
+              ),
+              FaIcon(
+                Icons.keyboard_double_arrow_right,
+                color: blue,
+              )
+            ],
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,7 +219,7 @@ class _layout_left_mainState extends State<layout_left_main> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.15,
+                        height: 180,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -226,6 +240,7 @@ class _layout_left_mainState extends State<layout_left_main> {
                                 padding: const EdgeInsets.only(
                                     right: 10, left: 10, top: 10),
                                 child: Container(
+                                  width: 100,
                                   decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -293,10 +308,10 @@ class _layout_left_mainState extends State<layout_left_main> {
                                             MediaQuery.of(context).size.width *
                                                 .35,
                                         child: Text(
-                                          list[index].title,
+                                          list[index].title.toUpperCase(),
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.secularOne(
-                                              fontSize: 16),
+                                              ),
                                           softWrap: true,
                                           overflow: TextOverflow.fade,
                                         ),
@@ -309,6 +324,24 @@ class _layout_left_mainState extends State<layout_left_main> {
                           },
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          "Move Down",
+                          style: GoogleFonts.secularOne(color: blue),
+                        ),
+                        FaIcon(
+                          Icons.keyboard_double_arrow_down,
+                          color: blue,
+                        )
+                      ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -375,8 +408,7 @@ class _layout_left_mainState extends State<layout_left_main> {
                                                   colorFilter:
                                                       const ColorFilter.mode(
                                                           Colors.white,
-                                                          BlendMode
-                                                              .colorBurn)),
+                                                          BlendMode.colorBurn)),
                                             ),
                                             child: Padding(
                                               padding:
@@ -384,22 +416,18 @@ class _layout_left_mainState extends State<layout_left_main> {
                                               child: Text(
                                                 list1[index].sl_number,
                                                 style: const TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                     fontSize: 18,
                                                     shadows: <Shadow>[
                                                       Shadow(
-                                                          offset:
-                                                              Offset(0, 0),
+                                                          offset: Offset(0, 0),
                                                           blurRadius: 10,
-                                                          color:
-                                                              Colors.black),
+                                                          color: Colors.black),
                                                       Shadow(
-                                                          offset: Offset(
-                                                              2.0, 2.0),
+                                                          offset:
+                                                              Offset(2.0, 2.0),
                                                           blurRadius: 10.0,
-                                                          color:
-                                                              Colors.black),
+                                                          color: Colors.black),
                                                     ],
                                                     color: Colors.white),
                                               ),
@@ -413,13 +441,16 @@ class _layout_left_mainState extends State<layout_left_main> {
                                                   .size
                                                   .width *
                                               .35,
-                                          child: Text(
-                                            list1[index].title,
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.secularOne(
-                                                fontSize: 16),
-                                            softWrap: true,
-                                            overflow: TextOverflow.fade,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              list1[index].title.toUpperCase(),
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.secularOne(
+                                                  fontSize: 16),
+                                              softWrap: true,
+                                              overflow: TextOverflow.fade,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -531,13 +562,16 @@ class _layout_left_mainState extends State<layout_left_main> {
                                                     .size
                                                     .width *
                                                 .35,
-                                            child: Text(
-                                              list2[index].title,
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.secularOne(
-                                                  fontSize: 16),
-                                              softWrap: true,
-                                              overflow: TextOverflow.fade,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                list2[index].title.toUpperCase(),
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.secularOne(
+                                                    fontSize: 16),
+                                                softWrap: true,
+                                                overflow: TextOverflow.fade,
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -556,7 +590,7 @@ class _layout_left_mainState extends State<layout_left_main> {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.15,
-                height: MediaQuery.of(context).size.height*0.95,
+                height: MediaQuery.of(context).size.height,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius:

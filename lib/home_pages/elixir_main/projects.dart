@@ -78,14 +78,7 @@ class _elixir_projectsState extends State<elixir_projects> {
                 listElixirProjectItems[index];
             return GestureDetector(
               onTap: () {
-                setState(() {
-                  if (_controller.value.isPlaying) {
-                    _controller.pause();
-                  } else {
-                    // If the video is paused, play it.
-                    _controller.play();
-                  }
-                });
+
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -108,22 +101,22 @@ class _elixir_projectsState extends State<elixir_projects> {
                         children: [
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 20, left: 20, right: 20),
+                                const EdgeInsets.all(10),
                             child: SizedBox(
-                              width: MediaQuery.of(context).size.width*0.5,
+                              width: MediaQuery.of(context).size.width*0.35,
                               child: Text(
                                 listElixirProjectItems[index]
                                     .elixirProjectListName
                                     .toUpperCase(),
                                 textAlign: TextAlign.start,
-                                style: GoogleFonts.secularOne(fontSize: 22),
+                                style: GoogleFonts.secularOne(fontSize: 16),
                                 softWrap: true,
                                 overflow: TextOverflow.fade,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                            padding: const EdgeInsets.all(10),
                             child: Container(
                               decoration: BoxDecoration(
                                   color: blue,
@@ -190,7 +183,7 @@ class _elixir_project_fullState extends State<elixir_project_full> {
     final videoID = YoutubePlayer.convertUrlToId(videoURl);
     _controller = YoutubePlayerController(
       initialVideoId: videoID!,
-      flags: const YoutubePlayerFlags(autoPlay: true, loop: true),
+      flags: const YoutubePlayerFlags(autoPlay: false, loop: true),
     )..addListener(listener);
 
     // TODO: implement initState
