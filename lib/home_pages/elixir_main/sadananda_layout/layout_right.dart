@@ -213,8 +213,8 @@ class _layout_right_mainState extends State<layout_right_main> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.15,
-                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width * 0.1,
+                height: MediaQuery.of(context).size.height*1.1,
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(

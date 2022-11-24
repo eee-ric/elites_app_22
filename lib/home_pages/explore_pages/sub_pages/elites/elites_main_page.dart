@@ -64,10 +64,7 @@ class _elites_main_pageState extends State<elites_main_page> {
         ),
         body: ListView(
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.3,
-              child: Column(
-                children: [
+
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset(
@@ -84,13 +81,11 @@ class _elites_main_pageState extends State<elites_main_page> {
                       style: GoogleFonts.alegreya(
                           fontSize: 18,
                           color: blue,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,),
                       textAlign: TextAlign.justify,
+                      overflow: TextOverflow.fade,
                     ),
-                  )
-                ],
-              ),
-            ),
+                  ),
             SizedBox(
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(

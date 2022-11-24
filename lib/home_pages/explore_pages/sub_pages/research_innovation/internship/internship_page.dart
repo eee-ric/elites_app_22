@@ -98,24 +98,27 @@ class _internship_pageState extends State<internship_page> {
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         //EXPLORE IMAGE
-                        CachedNetworkImage(
-                          imageUrl: listInternshipItems[index].internshipImage,
-                          imageBuilder: (context, imageProvider) => Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            height: 150,
-                            decoration: BoxDecoration(
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: CachedNetworkImage(
+                            imageUrl: listInternshipItems[index].internshipImage,
+                            imageBuilder: (context, imageProvider) => Container(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              height: 150,
+                              decoration: BoxDecoration(
 
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  bottomLeft: Radius.circular(25)),
-                              image: DecorationImage(
-                                  image: imageProvider,
-                                  fit: BoxFit.fitHeight,
-                                  colorFilter: const ColorFilter.mode(
-                                      Colors.white, BlendMode.colorBurn)),
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(25),
+                                    bottomLeft: Radius.circular(25)),
+                                image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.fitHeight,
+                                    colorFilter: const ColorFilter.mode(
+                                        Colors.white, BlendMode.colorBurn)),
+                              ),
                             ),
                           ),
                         ),
@@ -127,7 +130,7 @@ class _internship_pageState extends State<internship_page> {
                                 topRight: Radius.circular(20)),
                             color: Color.fromRGBO(255, 179, 0, 50)
                           ),
-                          width: MediaQuery.of(context).size.width * 0.55,
+                          width: MediaQuery.of(context).size.width * 0.5,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

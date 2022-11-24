@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160769235136:android:ccf4da23907d6d268c7525",
+        "android_client_info": {
+          "package_name": "com.kanzal.elites_app_22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160769235136-vm1moddp9llg220lo71sc1aorflthbm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxwju18SwnLt1bdXK-ug5l-9REiZXAU9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160769235136-vm1moddp9llg220lo71sc1aorflthbm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

@@ -62,10 +62,17 @@ class _home_main_pageState extends State<home_main_page> {
         appBar: AppBar(
           title: Padding(
             padding: const EdgeInsets.all(80),
-            child: Image.asset("assets/images/nitte_logo.png"),
+            child: GestureDetector(
+              onTap: (){
+                final Uri url = Uri.parse(
+                    "https://nmamit.nitte.edu.in/");
+                open_browser_url(url: url, inApp: true);
+              },
+                child: Image.asset("assets/images/nitte_logo.png")),
           ),
           backgroundColor: blue,
           centerTitle: true,
+          automaticallyImplyLeading: false,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(25),
@@ -299,6 +306,7 @@ class _home_main_pageState extends State<home_main_page> {
             )
           ],
         ));
+
   }
 
   _buildStoryPage(Map data) {
@@ -327,5 +335,10 @@ class _home_main_pageState extends State<home_main_page> {
           const Center(child: CircularProgressIndicator()),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
+  }
+  void open_browser_url({required Uri url, required bool inApp}) async {
+    if (await canLaunchUrl(url)) {
+      await (launchUrl(url, mode: LaunchMode.externalApplication));
+    }
   }
 }

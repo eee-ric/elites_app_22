@@ -125,7 +125,7 @@ class _tease_video_fullState extends State<tease_video_full> {
                 _controller.pause();
               }
             });
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>home_page()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>home_page()));
           },
           child: Padding(
             padding: const EdgeInsets.only(top: 20),

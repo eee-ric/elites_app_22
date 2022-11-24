@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:elites_app_22/home_pages/elixir_main/layout_pdf/pdf_layout.dart';
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/layout_left.dart';
 import 'package:elites_app_22/home_pages/elixir_main/sadananda_layout/layout_right.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _layout_mainState extends State<layout_main> {
   Widget build(BuildContext context) {
     final screens = [
       const layout_left_main(),
+      const pdf_layout(),
       const layout_right_main(),
     ];
     return Scaffold(
@@ -37,6 +39,10 @@ class _layout_mainState extends State<layout_main> {
         items: const [
           Icon(
             Icons.keyboard_double_arrow_left_outlined,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.map,
             color: Colors.white,
           ),
           Icon(

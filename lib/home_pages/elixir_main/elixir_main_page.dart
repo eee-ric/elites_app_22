@@ -87,9 +87,9 @@ class _elixir_main_pageState extends State<elixir_main_page> {
     });
   }
 
-  final blue = const  Color.fromRGBO(46, 49, 146, 38);
+  final blue = const Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
-  final yellow = const Color.fromRGBO(253,185,19, 50);
+  final yellow = const Color.fromRGBO(253, 185, 19, 50);
   final borderRadius = BorderRadius.circular(25);
 
   @override
@@ -116,14 +116,16 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => invitation_video()));
+                          builder: (context) => const invitation_video()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10, left: 20, top: 20),
                   child: Container(
+
                     height: 150,
                     width: MediaQuery.of(context).size.width * 0.42,
                     decoration: BoxDecoration(
+                        border: Border.all(width: 2, color: blue),
                         borderRadius: BorderRadius.circular(25), color: blueBg),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -145,8 +147,11 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                 ),
               ),
               GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>layout_main()));
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const layout_main()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20, left: 10, top: 20),
@@ -154,6 +159,7 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                     height: 150,
                     width: MediaQuery.of(context).size.width * 0.42,
                     decoration: BoxDecoration(
+                        border: Border.all(width: 2, color: blue),
                         borderRadius: BorderRadius.circular(25), color: blueBg),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -211,9 +217,8 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                             borderRadius: BorderRadius.circular(15),
                             color: Colors.transparent),
                         alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-
+                        child: const Padding(
+                          padding: EdgeInsets.all(10),
                         ),
                       ),
                     ),
@@ -247,6 +252,268 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                         ],
                       ),
                     ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: blueBg,
+                    blurRadius: 5.0,
+                  ),
+                ],
+                borderRadius: borderRadius,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+
+                  children: [
+                    Text(
+                      'ELIXIR 2022',
+                      style: GoogleFonts.alegreya(fontSize: 24,color: Colors.red),
+                    ),
+                    Text(
+                      'Agenda',
+                      style: GoogleFonts.alegreya(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Invocation',
+                      style: GoogleFonts.alegreya(fontWeight: FontWeight.bold),
+                    ),
+                    Table(
+                      children: [
+                        TableRow(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Welcome & About Elixir :',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: blue,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Dr. Suryanarayana K',
+                                  style: TextStyle(color: blue, fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          )
+                        ]),
+                        TableRow(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Chief Guest Address :',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: blue,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Shri. Vishal Hegde',
+                                  style: TextStyle(color: blue, fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          )
+                        ]),
+                      ],
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(right: 10, left: 10, top: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Prize Distribution',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Table(
+                      children: [
+                        TableRow(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Presidential Remarks :',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: blue,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Dr. Niranjan N. Chiplunkar',
+                                  style: TextStyle(color: blue, fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          )
+                        ]),
+                        TableRow(children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Vote of Thanks :',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: blue,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                right: 10, left: 10, top: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Mr. Samith Suvarna',
+                                  style: TextStyle(color: blue, fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          )
+                        ]),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                   Column(
+                     mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Padding(
+                         padding:
+                         const EdgeInsets.only(right: 10, left: 10, top: 10),
+                         child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: const [
+                             Text(
+                               'ELIXIR Inauguration\n \n Product Launch',
+                               style: TextStyle(
+                                   color: Colors.black,
+                                   fontSize: 12,
+                                   fontWeight: FontWeight.bold),
+                             ),
+                           ],
+                         ),
+                       ),
+                       Padding(
+                         padding:
+                         const EdgeInsets.only(right: 10, left: 10, top: 10),
+                         child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: const [
+                             Text(
+                               '\t \t 1. Electric Omni',
+                               style: TextStyle(color: Colors.black, fontSize: 12),
+                             ),
+                           ],
+                         ),
+                       ),
+                       Padding(
+                         padding:
+                         const EdgeInsets.only(right: 10, left: 10, top: 10),
+                         child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: const [
+                             Text(
+                               '\t \t 2. Solar Street Light',
+                               style: TextStyle(color: Colors.black, fontSize: 12),
+                             ),
+                           ],
+                         ),
+                       ),
+                       Padding(
+                         padding:
+                         const EdgeInsets.only(right: 10, left: 10, top: 10),
+                         child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: const [
+                             Text(
+                               '\t \t 3. Inventory Management',
+                               style: TextStyle(color: Colors.black, fontSize: 12),
+                             ),
+                           ],
+                         ),
+                       ),
+                       SizedBox(
+                         height: 20,
+                       ),
+                       Padding(
+                         padding:
+                         const EdgeInsets.only(right: 10, left: 10, top: 10),
+                         child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: const [
+                             Text(
+                               'Master of Ceremony - Ms. Jane \nDate : 21 November 2022 \nTime : 11:15am \nVenue : Sadananda Auditorium',
+                               style: TextStyle(color: Colors.black, fontSize: 12),
+                             ),
+                           ],
+                         ),
+                       ),
+                     ],
+                   )
                   ],
                 ),
               ),
@@ -314,8 +581,10 @@ class _elixir_main_pageState extends State<elixir_main_page> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => elixir_projects()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const elixir_projects()));
             },
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -353,7 +622,7 @@ class _elixir_main_pageState extends State<elixir_main_page> {
                                 blurRadius: 20.0,
                                 color: Colors.white),
                             Shadow(
-                                offset: Offset(2.0, 2.0),
+                                offset: const Offset(2.0, 2.0),
                                 blurRadius: 10.0,
                                 color: blue),
                           ]),
