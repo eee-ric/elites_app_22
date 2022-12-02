@@ -14,8 +14,8 @@ class _pdf_layoutState extends State<pdf_layout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SfPdfViewer.network(
-        'https://firebasestorage.googleapis.com/v0/b/elites-app-22.appspot.com/o/Sadananda%202.pdf?alt=media&token=9ea6e6b2-acf9-4665-a191-d8c6258c1a79',
+      body: SfPdfViewer.asset(
+        'assets/pdf/sadananda_layout.pdf',
         key: _pdfViewerKey,
       ),
     );

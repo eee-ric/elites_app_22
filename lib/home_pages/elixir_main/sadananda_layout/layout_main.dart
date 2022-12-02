@@ -15,7 +15,7 @@ class _layout_mainState extends State<layout_main> {
   final blue = const  Color.fromRGBO(46, 49, 146, 38);
   final blueBg = const Color.fromRGBO(149, 157, 244, 77);
   final yellow = const Color.fromRGBO(253,185,19, 50);
-  int index = 0;
+  int index = 1;
   @override
   Widget build(BuildContext context) {
     final screens = [

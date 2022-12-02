@@ -87,7 +87,7 @@ class _elites_main_pageState extends State<elites_main_page> {
                     ),
                   ),
             SizedBox(
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height*0.6,
               child: ListView.builder(
                 itemCount: listElitesItems.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -138,13 +138,13 @@ class _elites_main_pageState extends State<elites_main_page> {
                                           fontSize: 60,
                                           color: Colors.white,
                                           textStyle:
-                                              TextStyle(shadows: <Shadow>[
-                                            const Shadow(
+                                              const TextStyle(shadows: <Shadow>[
+                                            Shadow(
                                                 offset: Offset(0, 0),
                                                 blurRadius: 20.0,
                                                 color: Colors.white),
                                             Shadow(
-                                                offset: const Offset(5.0, 5.0),
+                                                offset: Offset(5.0, 5.0),
                                                 blurRadius: 10.0,
                                                 color: blue),
                                           ])),
